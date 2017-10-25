@@ -9,8 +9,9 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="resources/css/style.css" rel="stylesheet" media="screen">
 </head>
 <body>
- <h1>Hello Quel!</h1>
+ <h1 id="hi">Hello Quel!</h1>
 </body>
 </html>
