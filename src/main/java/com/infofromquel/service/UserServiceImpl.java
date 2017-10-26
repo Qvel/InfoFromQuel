@@ -3,11 +3,11 @@ package com.infofromquel.service;
 import com.infofromquel.dao.UserDao;
 import com.infofromquel.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Service
+@Repository
 public class UserServiceImpl implements UserService{
 
 

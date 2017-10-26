@@ -1,10 +1,8 @@
 package com.infofromquel.config;
 
-import com.infofromquel.dao.UserDao;
-import com.infofromquel.dao.UserDaoImpl;
-import com.infofromquel.service.UserService;
-import com.infofromquel.service.UserServiceImpl;
+
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -12,6 +10,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
+@ComponentScan(basePackages = {"com.infofromquel.dao","com.infofromquel.service"})
 public class SpringConfig {
 
     @Bean
@@ -27,16 +26,6 @@ public class SpringConfig {
         dataSource.setPassword("233763");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         return dataSource;
-    }
-
-    @Bean
-    public UserDao getUserDao(){
-        return new UserDaoImpl(getJdbcTemplate());
-    }
-
-    @Bean
-    public UserService getUserService(){
-        return new UserServiceImpl();
     }
 
 }
