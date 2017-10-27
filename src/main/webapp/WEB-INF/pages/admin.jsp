@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: quelz
@@ -12,5 +13,10 @@
 </head>
 <body>
      <h1> Hi ADMIN TALAS</h1>
+
+
+     Dear <strong>${user}</strong>, Welcome to Admin Page.
+     <a href="<c:url value="/logout" />">Logout</a>
+
 </body>
 </html>

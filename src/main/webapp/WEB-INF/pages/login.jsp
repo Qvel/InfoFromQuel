@@ -12,8 +12,6 @@
 
 
     <div class="form-bottom">
-        ${error}
-        ${logout}
         <form role="form" action="<c:url value="/login" />" method="post" class="login-form">
             <div class="form-group">
                 <label class="sr-only" for="j_username">Email</label>

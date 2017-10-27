@@ -31,7 +31,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers("/resources/**").permitAll()
                         .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                         .antMatchers("/getUsers/**").permitAll()
-                        .anyRequest().authenticated()
                 .and()
                     .httpBasic()
                 .and()
@@ -39,7 +38,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                    .usernameParameter("j_username")
                    .passwordParameter("j_password")
                 .and()
-                .csrf().disable()
                    .logout().permitAll()
                 .and()
                     .exceptionHandling().accessDeniedPage("/permissionError");
