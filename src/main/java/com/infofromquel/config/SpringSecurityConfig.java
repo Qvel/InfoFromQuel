@@ -19,9 +19,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationUsers authProvider;
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(authProvider);
