@@ -4,10 +4,12 @@ import com.infofromquel.service.security.AuthenticationUsers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
 
 @Configuration
 @EnableWebSecurity
@@ -16,6 +18,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthenticationUsers authProvider;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -34,13 +39,18 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .httpBasic()
                 .and()
-                   .formLogin().loginPage("/login").permitAll()
+                   .formLogin().loginPage("/").permitAll()
                    .usernameParameter("j_username")
                    .passwordParameter("j_password")
                 .and()
-                   .logout().permitAll()
+                   .logout().logoutSuccessUrl("/?logout")
+                .and()
+                    .rememberMe().alwaysRemember(true)
+                    .tokenValiditySeconds(1209600)
                 .and()
                     .exceptionHandling().accessDeniedPage("/permissionError");
     }
+
+
 
 }

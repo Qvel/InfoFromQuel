@@ -26,18 +26,13 @@ public class MainController {
         return "admin";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String getLoginPage(){
-        return "login";
-    }
-
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/login?logout";
+        return "redirect:/?logout";
     }
 
 }
