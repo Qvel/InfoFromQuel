@@ -6,6 +6,7 @@
         <fileset id="fileset" name="SpringConfig" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/com/infofromquel/config/SpringConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/infofromquel/config/WebConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/infofromquel/config/SpringSecurityConfig.java</file>
         </fileset>
       </configuration>
     </facet>
@@ -24,7 +25,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -49,5 +50,12 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.3.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.3.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.43" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:4.1.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-taglibs:4.1.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-acl:4.1.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:4.1.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:4.1.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
   </component>
 </module>

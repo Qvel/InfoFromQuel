@@ -18,11 +18,25 @@ public class UserDaoImpl implements UserDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private String FIND_ALL_USER = "select id , name , age " +
-                                   "from students " ;
-
+    private String FIND_ALL_USER =  "select users.id,users.login,users.email,users.password,roles.id as role_id,roles.name as role_name " +
+                                    "from users " +
+                                         ",roles " +
+                                         ",users_roles " +
+                                    "where users.id = users_roles.user_id " +
+                                    "and roles.id = users_roles.role_id ";
+    private String FIND_USER_BY_EMAIL = "select users.id,users.login,users.email,users.password,roles.id as role_id,roles.name as role_name " +
+                                        "from users " +
+                                             ",roles "+
+                                             ",users_roles "+
+                                        "where users.id = users_roles.user_id "+
+                                        "and roles.id = users_roles.role_id "+
+                                        "and users.email = ? " ;
 
     public List<User> findAll() {
         return jdbcTemplate.query(FIND_ALL_USER,new UserMapper());
+    }
+
+    public User findUserByName(String email){
+        return  jdbcTemplate.queryForObject(FIND_USER_BY_EMAIL,new UserMapper(),email);
     }
 }
