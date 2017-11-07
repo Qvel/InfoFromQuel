@@ -18,6 +18,10 @@ public class UserDaoImpl implements UserDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
+    @Autowired
+    User injectUser;
+
     private String FIND_ALL_USER =  "select users.id,users.login,users.email,users.password,roles.id as role_id,roles.name as role_name " +
                                     "from users " +
                                          ",roles " +
@@ -40,6 +44,13 @@ public class UserDaoImpl implements UserDao{
                                      "and roles.id = users_roles.role_id "+
                                      "and users.id = ? " ;
 
+    private String INSERT_USER_TABLE = "insert into users " +
+                                      "(login,password,email) " +
+                                      "values(?,?,?) ";
+    private String INSERT_INTO_USER_ROLE_TABLE =  "insert into users_roles " +
+                                                  "(user_id,role_id) " +
+                                                  "values (?,2)" ;
+
     public List<User> findAll() {
         return jdbcTemplate.query(FIND_ALL_USER,new UserMapper());
     }
@@ -50,5 +61,11 @@ public class UserDaoImpl implements UserDao{
 
     public User findUserById(int id){
         return  jdbcTemplate.queryForObject(FIND_USER_BY_ID,new UserMapper(),id);
+    }
+
+    public void createUser(User user){
+        jdbcTemplate.update(INSERT_USER_TABLE,user.getName(),user.getEmail(),user.getPassword());
+        injectUser = findUserByName(user.getEmail());
+        jdbcTemplate.update(INSERT_INTO_USER_ROLE_TABLE,injectUser.getId());
     }
 }

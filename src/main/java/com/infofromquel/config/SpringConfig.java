@@ -6,8 +6,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = {"com.infofromquel.dao","com.infofromquel.service","com.infofromquel.entity"})
@@ -26,6 +29,23 @@ public class SpringConfig {
         dataSource.setPassword("233763");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         return dataSource;
+    }
+
+    @Bean
+    public JavaMailSender getJavaMailSender() {
+        JavaMailSenderImpl  mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587); //587 // 465
+        mailSender.setProtocol("smtp");
+        mailSender.setUsername("iamquel08@gmail.com");
+        mailSender.setPassword("norter1995");
+
+        Properties mailProperties = new Properties();
+        mailProperties.put("mail.smtp.auth", true);
+        mailProperties.put("mail.smtp.starttls.enable", true);
+        mailSender.setJavaMailProperties(mailProperties);
+
+        return mailSender;
     }
 
 }

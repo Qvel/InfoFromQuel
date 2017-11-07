@@ -21,4 +21,8 @@ public class UserServiceImpl implements UserService{
     public User findUserById(int id){
         return userDao.findUserById(id);
     }
+
+    public void createUser(User user){
+        userDao.createUser(user);
+    }
 }

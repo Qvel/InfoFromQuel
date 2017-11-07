@@ -11,6 +11,6 @@
     <title>User</title>
 </head>
 <body>
-
+    <h1>SEND EMAIL PLEASE</h1>
 </body>
 </html>
