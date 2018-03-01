@@ -1,17 +1,20 @@
 package com.infofromquel.dao;
 
+import com.infofromquel.entity.Role;
 import com.infofromquel.entity.User;
 import com.infofromquel.mapper.UserMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UserDaoImpl implements UserDao{
 
-    public final JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
+    private static final Logger LOG = Logger.getLogger(UserDaoImpl.class);
 
     @Autowired
     public UserDaoImpl(JdbcTemplate jdbcTemplate) {
@@ -22,6 +25,9 @@ public class UserDaoImpl implements UserDao{
     @Autowired
     User injectUser;
 
+    @Autowired
+    Role role;
+
     private String FIND_ALL_USER =  "select users.id,users.login,users.email,users.password,roles.id as role_id,roles.name as role_name " +
                                     "from users " +
                                          ",roles " +
@@ -30,11 +36,11 @@ public class UserDaoImpl implements UserDao{
                                     "and roles.id = users_roles.role_id ";
     private String FIND_USER_BY_EMAIL = "select users.id,users.login,users.email,users.password,roles.id as role_id,roles.name as role_name " +
                                         "from users " +
-                                             ",roles "+
-                                             ",users_roles "+
-                                        "where users.id = users_roles.user_id "+
-                                        "and roles.id = users_roles.role_id "+
-                                        "and users.email = ? " ;
+                                             "left join users_roles " +
+                                                    "on users.id  = users_roles.user_id " +
+                                                    "left join roles " +
+                                                         "on roles.id = users_roles.role_id " +
+                                        "where users.email = ? " ;
 
     private String FIND_USER_BY_ID = "select users.id,users.login,users.email,users.password,roles.id as role_id,roles.name as role_name " +
                                      "from users " +
@@ -55,8 +61,27 @@ public class UserDaoImpl implements UserDao{
         return jdbcTemplate.query(FIND_ALL_USER,new UserMapper());
     }
 
-    public User findUserByName(String email){
-        return  jdbcTemplate.queryForObject(FIND_USER_BY_EMAIL,new UserMapper(),email);
+    public User findUserByEmail(String email){
+        LOG.debug("Hi in findUserByEmail with email + " + email);
+        jdbcTemplate.query(FIND_USER_BY_EMAIL, (resultSet, rowNum) -> {
+            injectUser = new User();
+            role = new Role();
+            injectUser.setId(resultSet.getInt("id"));
+            injectUser.setName(resultSet.getString("login"));
+            injectUser.setPassword(resultSet.getString("password"));
+            injectUser.setEmail(resultSet.getString("email"));
+            List<Role> user_roles = new ArrayList<>();
+            role.setId(resultSet.getInt("role_id"));
+            role.setName(resultSet.getString("role_name"));
+            user_roles.add(role);
+            injectUser.setRoles(user_roles);
+            return injectUser;
+        },email);
+        LOG.debug("injectUser = " + injectUser);
+        if(injectUser == null){
+            return null;
+        }
+        return  injectUser;
     }
 
     public User findUserById(int id){
@@ -64,8 +89,9 @@ public class UserDaoImpl implements UserDao{
     }
 
     public void createUser(User user){
-        jdbcTemplate.update(INSERT_USER_TABLE,user.getName(),user.getEmail(),user.getPassword());
-        injectUser = findUserByName(user.getEmail());
+        jdbcTemplate.update(INSERT_USER_TABLE,user.getName(),user.getPassword(),user.getEmail());
+        injectUser = findUserByEmail(user.getEmail());
+        LOG.debug("Id of user = "  + injectUser.getId());
         jdbcTemplate.update(INSERT_INTO_USER_ROLE_TABLE,injectUser.getId());
     }
 }

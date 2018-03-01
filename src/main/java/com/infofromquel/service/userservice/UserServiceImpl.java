@@ -1,4 +1,4 @@
-package com.infofromquel.service;
+package com.infofromquel.service.userservice;
 
 import com.infofromquel.dao.UserDao;
 import com.infofromquel.entity.User;
@@ -14,6 +14,9 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private User user;
+
     public List<User> findAll() {
         return userDao.findAll();
     }
@@ -24,5 +27,14 @@ public class UserServiceImpl implements UserService{
 
     public void createUser(User user){
         userDao.createUser(user);
+    }
+
+    public boolean findUserByEmail(String email){
+        user = userDao.findUserByEmail(email);
+        if(user.getName() != null){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

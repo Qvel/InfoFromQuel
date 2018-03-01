@@ -16,7 +16,7 @@ public class AuthenticationUsers implements UserDetailsService {
 
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
-        User user = userDao.findUserByName(userName);
+        User user = userDao.findUserByEmail(userName);
 
         return new CustomUserDetails(user);
     }

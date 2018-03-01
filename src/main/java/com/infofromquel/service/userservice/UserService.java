@@ -1,4 +1,4 @@
-package com.infofromquel.service;
+package com.infofromquel.service.userservice;
 
 import com.infofromquel.entity.User;
 
@@ -11,4 +11,6 @@ public interface UserService {
     User findUserById(int id);
 
     void createUser(User user);
+
+    boolean findUserByEmail(String email);
 }

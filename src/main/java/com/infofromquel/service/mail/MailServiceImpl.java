@@ -18,25 +18,15 @@ public class MailServiceImpl implements MailService {
     @Autowired
     private JavaMailSender getJavaMailSender;
 
-    @Override
-    public void sendEmail(User user) {
-        SimpleMailMessage mail = new SimpleMailMessage();
-            mail.setFrom("iamquel08@gmail.com");
-            mail.setTo("iamquel08@gmail.com");
-            mail.setSubject("test commit");
-            mail.setText("Darova");
-            getJavaMailSender.send(mail);
-
-    }
 
     @Override
-    public void sendHtmlEmail(User user,String template)  {
+    public void sendHtmlEmail(User user,String template,String subject)  {
         MimeMessage mimeMessage = getJavaMailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, false, "utf-8");
             mimeMessage.setContent(template, "text/html");
-            helper.setTo("iamquel08@gmail.com");
-            helper.setSubject("This is the test message for testing gmail smtp server using spring mail");
+            helper.setTo(user.getName());
+            helper.setSubject(subject);
             helper.setFrom("iamquel08@gmail.com");
         } catch (MessagingException e) {
             e.printStackTrace();

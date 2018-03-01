@@ -29,6 +29,8 @@ public class User {
 
     private List<Role> roles;
 
+    private boolean isExist;
+
 
     public int getId() {
         return id;
@@ -70,6 +72,14 @@ public class User {
         this.roles = roles;
     }
 
+    public boolean isExist() {
+        return isExist;
+    }
+
+    public void setExist(boolean exist) {
+        isExist = exist;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("User{");
@@ -78,6 +88,7 @@ public class User {
         sb.append(", password='").append(password).append('\'');
         sb.append(", email='").append(email).append('\'');
         sb.append(", roles=").append(roles);
+        sb.append(", isExist=").append(isExist);
         sb.append('}');
         return sb.toString();
     }

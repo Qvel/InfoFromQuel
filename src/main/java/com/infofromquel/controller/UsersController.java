@@ -3,8 +3,9 @@ package com.infofromquel.controller;
 
 import com.infofromquel.entity.EmailTemplates;
 import com.infofromquel.entity.User;
-import com.infofromquel.service.UserService;
 import com.infofromquel.service.mail.MailService;
+import com.infofromquel.service.userservice.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;;
@@ -13,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class UsersController {
 
+    private static final Logger LOG = Logger.getLogger(UsersController.class);
 
     @Autowired
     private UserService userService;
@@ -64,39 +65,30 @@ public class UsersController {
              @RequestParam String password
 
     ){
-     //   int hashCode;
+
+        LOG.debug("Create user with params = {} " +
+                             " login " + login +
+                             ";email " + email +
+                             ";password " + password);
+
+
+        /*
+        if(userService.findUserByEmail(email)){
+            LOG.debug("User Exist");
+            user.setExist(true);
+           return ResponseEntity.ok(user);
+        }*/
+
+        LOG.debug("User not exist");
 
         user.setEmail(email);
         user.setName(login);
         user.setPassword(password);
         userService.createUser(user);
 
-       // hashCode = user.hashCode();
-
-
-
+        //mailService.sendHtmlEmail(user,EmailTemplates.REGISTRATION_TEMPLATE,EmailTemplates.REGISTRATION_SUBJECT);
 
         return ResponseEntity.ok(user);
-    }
-
-    @RequestMapping(value = "/sendEmail" , method = RequestMethod.GET)
-    public String getEmail(){
-        mailService.sendEmail(user);
-                 return "user";
-    }
-
-    @RequestMapping(value = "/sendHtmlEmail" , method = RequestMethod.GET)
-    public String getHtmlEmail(){
-        int hashcode;
-        user.setEmail("iamquel08@gmail.com");
-        user.setName("Quel");
-        user.setPassword("12312");
-        hashcode = user.hashCode();
-        List<String> linksForEmail = new ArrayList<>();
-        linksForEmail.add("https://github.com/" + String.valueOf(hashcode));
-        mailService.sendHtmlEmail(user,mailService.setLinksIntoMessage(EmailTemplates.REGESTRATION_TEMPLATE,linksForEmail));
-
-        return "user";
     }
 
 }
