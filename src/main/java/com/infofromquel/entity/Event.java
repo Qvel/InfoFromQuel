@@ -11,22 +11,16 @@ public class Event {
     public Event() {
     }
 
-    public Event(List<User> eventUsers, String name, String date, String description, String longitude, String latitude) {
-        this.eventUsers = eventUsers;
-        this.name = name;
-        this.date = date;
-        this.description = description;
-        this.longitude = longitude;
-        this.latitude = latitude;
-    }
-
     private String faceBookId;
-
+    private String place;
+    private String street;
     private List<User> eventUsers;
-
+    private String sourceImageLink;
     private String name;
 
-    private String date;
+    private String startDate;
+
+    private String endDate;
 
     private String description;
 
@@ -58,14 +52,6 @@ public class Event {
         this.name = name;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -90,12 +76,52 @@ public class Event {
         this.latitude = latitude;
     }
 
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getSourceImageLink() {
+        return sourceImageLink;
+    }
+
+    public void setSourceImageLink(String sourceImageLink) {
+        this.sourceImageLink = sourceImageLink;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Event{");
         sb.append("eventUsers=").append(eventUsers);
         sb.append(", name='").append(name).append('\'');
-        sb.append(", date='").append(date).append('\'');
+        sb.append(", date='").append(startDate).append('\'');
         sb.append(", description='").append(description).append('\'');
         sb.append(", longitude='").append(longitude).append('\'');
         sb.append(", latitude='").append(latitude).append('\'');

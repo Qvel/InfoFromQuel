@@ -15,7 +15,7 @@ public class WebDispatcherServlet implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
 
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.register(SpringConfig.class,WebConfig.class,SpringSecurityConfig.class);
+        context.register(SpringConfig.class,WebConfig.class,SpringSecurityConfig.class,PropertiesConfig.class);
         context.setServletContext(servletContext);
 
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(context));

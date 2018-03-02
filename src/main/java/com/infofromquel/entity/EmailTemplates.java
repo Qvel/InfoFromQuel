@@ -8,4 +8,6 @@ public abstract class EmailTemplates {
                                                  "<a href=0>Please follow this link to continue registration </a>";
 
     public static String REGISTRATION_SUBJECT = "Thanks for your registration on InfoQvel ";
+
+
 }

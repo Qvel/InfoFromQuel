@@ -1,9 +1,11 @@
 package com.infofromquel.config;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -16,6 +18,9 @@ import java.util.Properties;
 @ComponentScan(basePackages = {"com.infofromquel.dao","com.infofromquel.service","com.infofromquel.entity"})
 public class SpringConfig {
 
+    @Autowired
+    private Environment env;
+
     @Bean
     public JdbcTemplate getJdbcTemplate() {
         return new JdbcTemplate(getDataSource());
@@ -24,21 +29,21 @@ public class SpringConfig {
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/infoquel?useSll=false");
-        dataSource.setUsername("Quel");
-        dataSource.setPassword("233763");
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setUrl(env.getProperty("jdbc.url"));
+        dataSource.setUsername(env.getProperty("jdbc.username"));
+        dataSource.setPassword(env.getProperty("jdbc.password"));
+        dataSource.setDriverClassName(env.getProperty("jdbc.driver"));
         return dataSource;
     }
 
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl  mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.gmail.com");
+        mailSender.setHost(env.getProperty("mail.host"));
         mailSender.setPort(587); //587 // 465
-        mailSender.setProtocol("smtp");
-        mailSender.setUsername("iamquel08@gmail.com");
-        mailSender.setPassword("norter1995");
+        mailSender.setProtocol(env.getProperty("mail.protocol"));
+        mailSender.setUsername(env.getProperty("mail.username"));
+        mailSender.setPassword(env.getProperty("mail.password"));
 
         Properties mailProperties = new Properties();
         mailProperties.put("mail.smtp.auth", true);

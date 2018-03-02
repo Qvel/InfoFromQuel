@@ -2,10 +2,15 @@
 package com.infofromquel.service.facebook;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.infofromquel.controller.FaceBookController;
+import com.infofromquel.entity.EmailTemplates;
 import com.infofromquel.entity.Event;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -22,6 +27,12 @@ public class FacebookServiceImpl implements FacebookService{
 
     @Autowired
     Event event;
+
+    @Autowired
+    FacebookService facebookService;
+
+    @Autowired
+    private Environment env;
 
     @Override
     public String getFacebookEvents(String query) {
@@ -51,7 +62,10 @@ public class FacebookServiceImpl implements FacebookService{
 
         return allResponse;
     }
-
+    /*
+        Доделать остальные фиелды , детальнее
+        https://developers.facebook.com/docs/graph-api/reference/event
+     */
     @Override
     public List<Event> parseToEntity(JsonObject jsonObject) {
 
@@ -61,14 +75,55 @@ public class FacebookServiceImpl implements FacebookService{
         jarray.forEach(
                 jsonEvent -> {
                     event = new Event();
-                    event.setName(jsonEvent.getAsJsonObject().get("name").getAsString());
-                    event.setDescription(jsonEvent.getAsJsonObject().get("description").getAsString());
-                    event.setFaceBookId(jsonEvent.getAsJsonObject().get("id").getAsString());
+                    if(jsonEvent.getAsJsonObject().has("name")){
+                        event.setName(jsonEvent.getAsJsonObject().get("name").getAsString());
+                    }
+                    if(jsonEvent.getAsJsonObject().has("description")){
+                        event.setDescription(jsonEvent.getAsJsonObject().get("description").getAsString());
+                    }
+                    if(jsonEvent.getAsJsonObject().has("id")){
+                        event.setFaceBookId(jsonEvent.getAsJsonObject().get("id").getAsString());
+                        String query = "https://graph.facebook.com/" + jsonEvent.getAsJsonObject().get("id").getAsString() + "?fields=id,name,cover&access_token=" + env.getProperty("facebook.access.token");
+                        JsonObject image = (new JsonParser()).parse(facebookService.getFacebookEvents(query)).getAsJsonObject();
+                        if(image.getAsJsonObject().has("cover")){
+                            if(image.getAsJsonObject().get("cover").getAsJsonObject().has("source")){
+                                event.setSourceImageLink(image.getAsJsonObject().get("cover").getAsJsonObject().get("source").getAsString());
+                            }
+                        }
+                    }
+                    if(jsonEvent.getAsJsonObject().has("start_time")){
+                        event.setStartDate(parseDate(jsonEvent.getAsJsonObject().get("start_time").getAsString()));
+                    }
+                    if(jsonEvent.getAsJsonObject().has("end_time")){
+                        event.setEndDate(parseDate(jsonEvent.getAsJsonObject().get("end_time").getAsString()));
+                    }
+                    if(jsonEvent.getAsJsonObject().has("place")){
+                        if(jsonEvent.getAsJsonObject().get("place").getAsJsonObject().has("name")){
+                            event.setPlace(jsonEvent.getAsJsonObject().get("place").getAsJsonObject().get("name").getAsString());
+                        }
+                        if(jsonEvent.getAsJsonObject().get("place").getAsJsonObject().has("location")) {
+                            JsonObject location = jsonEvent.getAsJsonObject().get("place").getAsJsonObject().get("location").getAsJsonObject();
+                            if (location.has("latitude")) {
+                                event.setLatitude(location.get("latitude").getAsString());
+                            }
+                            if (location.has("longitude")) {
+                                event.setLongitude(location.get("longitude").getAsString());
+                            }
+                            if (location.has("street")) {
+                                event.setStreet(location.get("street").getAsString());
+                            }
+                        }
+                    }
+
                     listOfEvents.add(event);
                 }
         );
 
         return listOfEvents;
+    }
+
+    private String parseDate(String facebookDateFormat){
+        return facebookDateFormat.split("T")[0] + "  " + facebookDateFormat.split("T")[1].substring(0,5);
     }
 }
 
