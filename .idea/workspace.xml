@@ -109,8 +109,8 @@
       <file leaf-file-name="SpringConfig.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/config/SpringConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+            <state relative-caret-position="76">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -835,7 +835,7 @@
       <workItem from="1517208303188" duration="22000" />
       <workItem from="1518619171353" duration="1157000" />
       <workItem from="1519904994893" duration="7615000" />
-      <workItem from="1519978893855" duration="20702000" />
+      <workItem from="1519978893855" duration="21091000" />
     </task>
     <task id="LOCAL-00001" summary="Without DB">
       <created>1508939311298</created>
@@ -928,11 +928,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520000451986</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Sending Emails">
+      <created>1520001264194</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1520001264194</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179395000" />
+    <option name="totallyTimeSpent" value="179784000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1389,8 +1396,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/config/SpringConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+        <state relative-caret-position="76">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
