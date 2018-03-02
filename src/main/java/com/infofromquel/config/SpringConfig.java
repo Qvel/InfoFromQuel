@@ -25,8 +25,8 @@ public class SpringConfig {
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUrl("jdbc:mysql://localhost:3306/infoquel?useSll=false");
-        dataSource.setUsername("Quel");
-        dataSource.setPassword("233763");
+        dataSource.setUsername("");
+        dataSource.setPassword("");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         return dataSource;
     }
@@ -37,8 +37,8 @@ public class SpringConfig {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587); //587 // 465
         mailSender.setProtocol("smtp");
-        mailSender.setUsername("iamquel08@gmail.com");
-        mailSender.setPassword("norter1995");
+        mailSender.setUsername("");
+        mailSender.setPassword("");
 
         Properties mailProperties = new Properties();
         mailProperties.put("mail.smtp.auth", true);
