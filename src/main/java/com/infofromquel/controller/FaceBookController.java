@@ -39,8 +39,6 @@ public class FaceBookController {
         JsonObject jsonObject = (new JsonParser()).parse(facebookService.getFacebookEvents(query)).getAsJsonObject();
         List<Event> events = facebookService.parseToEntity(jsonObject);
         LOG.trace(events);
-        //event.setDescription(jarray.get(0).getAsJsonObject().get("description").getAsString());
-        //LOG.trace(jarray.get(0).getAsJsonObject().get("description").getAsString());
         return ResponseEntity.ok(events);
     }
 
