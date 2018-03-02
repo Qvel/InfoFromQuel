@@ -7,6 +7,7 @@
           <file>file://$MODULE_DIR$/src/main/java/com/infofromquel/config/SpringConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/infofromquel/config/WebConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/infofromquel/config/SpringSecurityConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/infofromquel/config/SocialConfig.java</file>
         </fileset>
       </configuration>
     </facet>
@@ -60,5 +61,6 @@
     <orderEntry type="library" name="Maven: javax.mail:mail:1.4.3" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.2.4" level="project" />
   </component>
 </module>

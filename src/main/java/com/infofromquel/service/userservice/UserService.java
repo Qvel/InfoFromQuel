@@ -10,7 +10,7 @@ public interface UserService {
 
     User findUserById(int id);
 
-    void createUser(User user);
+    User createUser(User user);
 
     boolean findUserByEmail(String email);
 }

@@ -88,10 +88,11 @@ public class UserDaoImpl implements UserDao{
         return  jdbcTemplate.queryForObject(FIND_USER_BY_ID,new UserMapper(),id);
     }
 
-    public void createUser(User user){
+    public User createUser(User user){
         jdbcTemplate.update(INSERT_USER_TABLE,user.getName(),user.getPassword(),user.getEmail());
         injectUser = findUserByEmail(user.getEmail());
         LOG.debug("Id of user = "  + injectUser.getId());
         jdbcTemplate.update(INSERT_INTO_USER_ROLE_TABLE,injectUser.getId());
+        return injectUser;
     }
 }

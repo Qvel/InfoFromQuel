@@ -20,17 +20,27 @@ public class Event {
         this.latitude = latitude;
     }
 
+    private String faceBookId;
+
     private List<User> eventUsers;
 
-   private String name;
+    private String name;
 
-   private String date;
+    private String date;
 
-   private String description;
+    private String description;
 
-   private String longitude;
+    private String longitude;
 
-   private String latitude;
+    private String latitude;
+
+    public String getFaceBookId() {
+        return faceBookId;
+    }
+
+    public void setFaceBookId(String faceBookId) {
+        this.faceBookId = faceBookId;
+    }
 
     public List<User> getEventUsers() {
         return eventUsers;

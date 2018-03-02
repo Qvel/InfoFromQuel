@@ -19,7 +19,7 @@ $(document).ready(function() {
 
     getUsers();
 
-
+    getEvents();
 
 });
 
@@ -34,7 +34,19 @@ function registration(login,email,password){
     });
 }
 
-
+function getEvents(){
+    $.ajax({
+        url: ajax_location + "/facebook",
+        type: "GET",
+        dataType: "json",
+        contentType: 'application/json;charset=utf-8',
+        mimeType: 'application/json',
+        success: parseEvents,
+        error: function (data) {
+            console.log(data);
+        }
+    });
+}
 
 function getUsers(){
 
@@ -43,7 +55,7 @@ $.ajax({
     url: ajax_location + "/getUsers",
     type: "POST",
     dataType: "json",
-    contentType: 'application/json',
+    contentType: 'application/json;charset=utf-8',
     mimeType: 'application/json',
     success: parseUsers,
     error: function (data) {
@@ -71,3 +83,6 @@ function parseUsers(data) {
 }
 
 
+function parseEvents (data) {
+    Events = data;
+}

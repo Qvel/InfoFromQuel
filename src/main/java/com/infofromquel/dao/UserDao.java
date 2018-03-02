@@ -12,7 +12,7 @@ public interface UserDao {
 
     User findUserById(int id);
 
-    void createUser(User user);
+    User createUser(User user);
 
 
 }

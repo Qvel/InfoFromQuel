@@ -84,8 +84,8 @@ public class UsersController {
         user.setEmail(email);
         user.setName(login);
         user.setPassword(password);
-        userService.createUser(user);
-
+        user = userService.createUser(user);
+        LOG.debug(user.getId() + " "  + user.getRoles());
         //mailService.sendHtmlEmail(user,EmailTemplates.REGISTRATION_TEMPLATE,EmailTemplates.REGISTRATION_SUBJECT);
 
         return ResponseEntity.ok(user);

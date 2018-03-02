@@ -25,8 +25,9 @@ public class UserServiceImpl implements UserService{
         return userDao.findUserById(id);
     }
 
-    public void createUser(User user){
-        userDao.createUser(user);
+    public User createUser(User user){
+        user = userDao.createUser(user);
+        return user;
     }
 
     public boolean findUserByEmail(String email){
