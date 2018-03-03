@@ -1,14 +1,9 @@
 package com.infofromquel.controller;
 
-
-
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.infofromquel.entity.EmailTemplates;
-import com.infofromquel.entity.Event;
-import com.infofromquel.entity.User;
+import com.infofromquel.entity.Event;;
+import com.infofromquel.service.eventservice.EventService;
 import com.infofromquel.service.facebook.FacebookService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +26,8 @@ public class FaceBookController {
     private FacebookService facebookService;
     @Autowired
     private Environment env;
+    @Autowired
+    private EventService eventService;
 
     @RequestMapping(value = "/facebook" , method = RequestMethod.GET)
     public ResponseEntity<List<Event>>  helloFacebook() {
@@ -39,6 +36,7 @@ public class FaceBookController {
         JsonObject jsonObject = (new JsonParser()).parse(facebookService.getFacebookEvents(query)).getAsJsonObject();
         List<Event> events = facebookService.parseToEntity(jsonObject);
         LOG.trace(events);
+        eventService.createEventsFromFacebook(events);
         return ResponseEntity.ok(events);
     }
 

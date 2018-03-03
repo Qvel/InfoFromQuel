@@ -79,7 +79,7 @@ public class FacebookServiceImpl implements FacebookService{
                         event.setName(jsonEvent.getAsJsonObject().get("name").getAsString());
                     }
                     if(jsonEvent.getAsJsonObject().has("description")){
-                        event.setDescription(jsonEvent.getAsJsonObject().get("description").getAsString());
+                        event.setDescription(mysqlSafe(jsonEvent.getAsJsonObject().get("description").getAsString()));
                     }
                     if(jsonEvent.getAsJsonObject().has("id")){
                         event.setFaceBookId(jsonEvent.getAsJsonObject().get("id").getAsString());
@@ -124,6 +124,23 @@ public class FacebookServiceImpl implements FacebookService{
 
     private String parseDate(String facebookDateFormat){
         return facebookDateFormat.split("T")[0] + "  " + facebookDateFormat.split("T")[1].substring(0,5);
+    }
+
+    private String mysqlSafe(String input) {
+        if (input == null) return null;
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < input.length(); i++) {
+            if (i < (input.length() - 1)) { // Emojis are two characters long in java, e.g. a rocket emoji is "\uD83D\uDE80";
+                if (Character.isSurrogatePair(input.charAt(i), input.charAt(i + 1))) {
+                    i += 1; //also skip the second character of the emoji
+                    continue;
+                }
+            }
+            sb.append(input.charAt(i));
+        }
+
+        return sb.toString();
     }
 }
 

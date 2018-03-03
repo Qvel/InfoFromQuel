@@ -10,7 +10,7 @@ public class Event {
 
     public Event() {
     }
-
+    private int id;
     private String faceBookId;
     private String place;
     private String street;
@@ -114,6 +114,14 @@ public class Event {
 
     public void setSourceImageLink(String sourceImageLink) {
         this.sourceImageLink = sourceImageLink;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
