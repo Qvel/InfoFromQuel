@@ -1,5 +1,6 @@
 package com.infofromquel.service.mail;
 
+import com.infofromquel.entity.EmailTemplates;
 import com.infofromquel.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -20,11 +21,11 @@ public class MailServiceImpl implements MailService {
 
 
     @Override
-    public void sendHtmlEmail(User user,String template,String subject)  {
+    public void sendHtmlEmail(User user, EmailTemplates template, String subject)  {
         MimeMessage mimeMessage = getJavaMailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, false, "utf-8");
-            mimeMessage.setContent(template, "text/html");
+            mimeMessage.setContent(template.getTemplate(), "text/html");
             helper.setTo(user.getName());
             helper.setSubject(subject);
             helper.setFrom("iamquel08@gmail.com");

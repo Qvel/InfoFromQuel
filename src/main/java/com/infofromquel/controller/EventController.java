@@ -1,6 +1,7 @@
 package com.infofromquel.controller;
 
 
+
 import com.infofromquel.entity.Event;
 import com.infofromquel.service.eventservice.EventService;
 import org.apache.log4j.Logger;
@@ -10,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import java.util.List;
 
