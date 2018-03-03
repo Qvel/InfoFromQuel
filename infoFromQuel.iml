@@ -8,6 +8,7 @@
           <file>file://$MODULE_DIR$/src/main/java/com/infofromquel/config/WebConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/infofromquel/config/SpringSecurityConfig.java</file>
           <file>file://$MODULE_DIR$/src/main/java/com/infofromquel/config/SocialConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/infofromquel/config/PropertiesConfig.java</file>
         </fileset>
       </configuration>
     </facet>

@@ -3,13 +3,11 @@ package com.infofromquel.service.eventservice;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.infofromquel.controller.FaceBookController;
 import com.infofromquel.dao.EventDao;
 import com.infofromquel.entity.Event;
 import com.infofromquel.service.facebook.FacebookService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

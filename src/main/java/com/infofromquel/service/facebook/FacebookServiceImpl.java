@@ -2,11 +2,8 @@
 package com.infofromquel.service.facebook;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.infofromquel.controller.FaceBookController;
-import com.infofromquel.entity.EmailTemplates;
 import com.infofromquel.entity.Event;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
