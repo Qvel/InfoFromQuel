@@ -22,21 +22,26 @@ public class FaceBookController {
 
     private static final Logger LOG = Logger.getLogger(FaceBookController.class);
 
-    @Autowired
-    private FacebookService facebookService;
+
     @Autowired
     private Environment env;
     @Autowired
     private EventService eventService;
 
-    @RequestMapping(value = "/facebook" , method = RequestMethod.GET)
+    @RequestMapping(value = "/addEventsToBd" , method = RequestMethod.GET)
     public ResponseEntity<List<Event>>  helloFacebook() {
 
         String query = "https://graph.facebook.com/search?q=Kyiv&type=event&center=50.45,30.52&distance=1000&limit=10&access_token=" + env.getProperty("facebook.access.token");
-        JsonObject jsonObject = (new JsonParser()).parse(facebookService.getFacebookEvents(query)).getAsJsonObject();
-        List<Event> events = facebookService.parseToEntity(jsonObject);
-        LOG.trace(events);
-        eventService.createEventsFromFacebook(events);
+        List<Event> events = eventService.addToBdFacebookEvents(query);
+
+        return ResponseEntity.ok(events);
+    }
+
+    @RequestMapping(value = "/facebook" , method = RequestMethod.GET)
+    public ResponseEntity<List<Event>>  getEvents() {
+
+        List<Event> events = eventService.getAllEvents();
+
         return ResponseEntity.ok(events);
     }
 

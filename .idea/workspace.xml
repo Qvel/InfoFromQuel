@@ -7,27 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c5a5a99-47a1-42ac-86a4-17889a4cc0ca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/dao/EventDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/dao/EventDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/mapper/EventMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/config/SpringConfig.class" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/config/SpringConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/config/WebDispatcherServlet.class" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/config/WebDispatcherServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/controller/FaceBookController.class" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/controller/FaceBookController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/service/facebook/FacebookServiceImpl.class" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/service/facebook/FacebookServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/config/SpringConfig.class" afterPath="$PROJECT_DIR$/target/classes/com/infofromquel/config/SpringConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/config/WebDispatcherServlet.class" afterPath="$PROJECT_DIR$/target/classes/com/infofromquel/config/WebDispatcherServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/controller/FaceBookController.class" afterPath="$PROJECT_DIR$/target/classes/com/infofromquel/controller/FaceBookController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/service/facebook/FacebookServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/infofromquel/service/facebook/FacebookServiceImpl.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/controller/FaceBookController.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/entity/Event.class" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/entity/Event.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/entity/Event.class" afterPath="$PROJECT_DIR$/target/classes/com/infofromquel/entity/Event.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/FaceBookController.java" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/FaceBookController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/infofromquel/entity/Event.java" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/entity/Event.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/infofromquel/service/facebook/FacebookServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/service/facebook/FacebookServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/application.properties" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/infofromquel/dao/EventDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/dao/EventDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/infofromquel/mapper/EventMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/mapper/EventMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventService.java" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventServiceImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -51,25 +39,78 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EventDaoImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/dao/EventDaoImpl.java">
+      <file leaf-file-name="EventService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state relative-caret-position="204">
+              <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1520096061928" expanded="true" signature="755:981" ph="insert into event... " />
-                <marker date="1520096061928" expanded="true" signature="1033:1274" ph="select id,ev... event" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UsersController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/UsersController.java">
+      <file leaf-file-name="EventDaoImpl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/dao/EventDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-184">
-              <caret line="48" column="7" lean-forward="true" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
+            <state relative-caret-position="394">
+              <caret line="43" column="91" lean-forward="false" selection-start-line="43" selection-start-column="80" selection-end-line="43" selection-end-column="91" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3623#3624#0" expanded="true" />
+                <element signature="e#3699#3700#0" expanded="true" />
+                <marker date="1520096581670" expanded="true" signature="755:981" ph="insert into event... " />
+                <marker date="1520096581670" expanded="true" signature="1033:1274" ph="select id,ev... event" />
+                <marker date="1520096581670" expanded="true" signature="1317:1475" ph="select id,ev... event" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EventMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/mapper/EventMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EventServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="838">
+              <caret line="54" column="38" lean-forward="false" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1440#1441#0" expanded="true" />
+                <element signature="e#1486#1487#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FaceBookController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/FaceBookController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="38" column="39" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -78,8 +119,8 @@
       <file leaf-file-name="UserDaoImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/dao/UserDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="66" column="22" lean-forward="false" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="22" />
+            <state relative-caret-position="198">
+              <caret line="60" column="66" lean-forward="false" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="66" />
               <folding>
                 <marker date="1519909228181" expanded="true" signature="791:1207" ph="select users... users" />
                 <marker date="1519909228181" expanded="true" signature="1252:1806" ph="select users... users" />
@@ -91,73 +132,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/mapper/EventMapper.java">
+      <file leaf-file-name="FacebookServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/facebook/FacebookServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="31" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Event.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/entity/Event.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="118" column="24" lean-forward="false" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="24" />
-              <folding>
-                <element signature="e#2310#2311#0" expanded="true" />
-                <element signature="e#2343#2344#0" expanded="true" />
-                <element signature="e#2371#2372#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EventService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EventServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="38" lean-forward="true" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FaceBookController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/FaceBookController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="36" column="53" lean-forward="false" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="61" lean-forward="false" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="61" />
+            <state relative-caret-position="359">
+              <caret line="106" column="49" lean-forward="false" selection-start-line="106" selection-start-column="38" selection-end-line="106" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -247,15 +226,15 @@
         <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/config/SpringConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/dao/UserDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/dao/EventDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/FaceBookController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/service/facebook/FacebookServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/entity/Event.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/mapper/EventMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/dao/EventDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/FaceBookController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/mapper/EventMapper.java" />
       </list>
     </option>
   </component>
@@ -433,6 +412,16 @@
               <item name="infofromquel" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
               <item name="eventservice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="infoFromQuel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="infoFromQuel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="infofromquel" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="facebook" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="infoFromQuel" type="b2602c69:ProjectViewProjectNode" />
@@ -865,7 +854,7 @@
       <workItem from="1519978893855" duration="30676000" />
       <workItem from="1520070377334" duration="609000" />
       <workItem from="1520081823409" duration="6802000" />
-      <workItem from="1520090215879" duration="4291000" />
+      <workItem from="1520090215879" duration="5081000" />
     </task>
     <task id="LOCAL-00001" summary="Without DB">
       <created>1508939311298</created>
@@ -979,11 +968,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520013179283</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Parsing fb">
+      <created>1520096160060</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1520096160060</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201071000" />
+    <option name="totallyTimeSpent" value="201861000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1274,13 +1270,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="53" column="6" lean-forward="false" selection-start-line="53" selection-start-column="2" selection-end-line="53" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1347,14 +1336,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/facebook/FacebookServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="81" column="45" lean-forward="true" selection-start-line="81" selection-start-column="45" selection-end-line="81" selection-end-column="116" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -1381,16 +1362,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/FaceBookController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="36" column="53" lean-forward="false" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -1407,55 +1378,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="38" lean-forward="true" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/dao/UserDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="66" column="22" lean-forward="false" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="22" />
-          <folding>
-            <marker date="1519909228181" expanded="true" signature="791:1207" ph="select users... users" />
-            <marker date="1519909228181" expanded="true" signature="1252:1806" ph="select users... users" />
-            <marker date="1519909228181" expanded="true" signature="1850:2316" ph="select users... users" />
-            <marker date="1519909228181" expanded="true" signature="2362:2502" ph="insert into users... " />
-            <marker date="1519909228181" expanded="true" signature="2557:2721" ph="insert into users_roles... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/UsersController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-184">
           <caret line="48" column="7" lean-forward="true" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/mapper/EventMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="8" lean-forward="false" selection-start-line="18" selection-start-column="8" selection-end-line="31" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1471,14 +1398,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/dao/EventDaoImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="253">
+          <caret line="38" column="39" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1520096061928" expanded="true" signature="755:981" ph="insert into event... " />
-            <marker date="1520096061928" expanded="true" signature="1033:1274" ph="select id,ev... event" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/eventservice/EventServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="838">
+          <caret line="54" column="38" lean-forward="false" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1440#1441#0" expanded="true" />
+            <element signature="e#1486#1487#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/FaceBookController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/dao/UserDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="60" column="66" lean-forward="false" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="66" />
+          <folding>
+            <marker date="1519909228181" expanded="true" signature="791:1207" ph="select users... users" />
+            <marker date="1519909228181" expanded="true" signature="1252:1806" ph="select users... users" />
+            <marker date="1519909228181" expanded="true" signature="1850:2316" ph="select users... users" />
+            <marker date="1519909228181" expanded="true" signature="2362:2502" ph="insert into users... " />
+            <marker date="1519909228181" expanded="true" signature="2557:2721" ph="insert into users_roles... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/facebook/FacebookServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="106" column="49" lean-forward="false" selection-start-line="106" selection-start-column="38" selection-end-line="106" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/mapper/EventMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/dao/EventDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="43" column="91" lean-forward="false" selection-start-line="43" selection-start-column="80" selection-end-line="43" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3623#3624#0" expanded="true" />
+            <element signature="e#3699#3700#0" expanded="true" />
+            <marker date="1520096581670" expanded="true" signature="755:981" ph="insert into event... " />
+            <marker date="1520096581670" expanded="true" signature="1033:1274" ph="select id,ev... event" />
+            <marker date="1520096581670" expanded="true" signature="1317:1475" ph="select id,ev... event" />
           </folding>
         </state>
       </provider>

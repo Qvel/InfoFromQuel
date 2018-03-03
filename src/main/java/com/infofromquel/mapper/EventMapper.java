@@ -24,7 +24,7 @@ public class EventMapper implements RowMapper<Event> {
         event.setStreet(resultSet.getString("street"));
         event.setDescription(resultSet.getString("description"));
         event.setLongitude(resultSet.getString("longitude"));
-        event.setLongitude(resultSet.getString("latitude"));
+        event.setLatitude(resultSet.getString("latitude"));
         event.setSourceImageLink(resultSet.getString("source_image"));
         event.setStartDate(resultSet.getString("start_date"));
         event.setEndDate(resultSet.getString("end_date"));

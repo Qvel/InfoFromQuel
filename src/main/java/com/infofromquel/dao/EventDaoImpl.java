@@ -30,6 +30,9 @@ public class EventDaoImpl implements EventDao{
                                                "from event " +
                                                "where facebookid = ? ";
 
+    private String FIND_ALL_EVENTS = "select id,ev_name,facebookid,place,street,description,longitude,latitude,source_image,start_date,end_date " +
+                                     "from event " ;
+
     @Override
     public Event createEvent(Event event) {
         LOG.trace(event.getFaceBookId());
@@ -80,6 +83,6 @@ public class EventDaoImpl implements EventDao{
 
     @Override
     public List<Event> getAllEvents() {
-        return null;
+        return jdbcTemplate.query(FIND_ALL_EVENTS,new EventMapper());
     }
 }

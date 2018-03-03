@@ -8,4 +8,8 @@ public interface EventService {
 
     void createEventsFromFacebook(List<Event> events);
 
+    List<Event> addToBdFacebookEvents(String query);
+
+    List<Event> getAllEvents();
+
 }
