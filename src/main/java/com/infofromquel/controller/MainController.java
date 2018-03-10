@@ -60,5 +60,10 @@ public class MainController {
         return "permissionError";
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "include/login";
+    }
+
 
 }
