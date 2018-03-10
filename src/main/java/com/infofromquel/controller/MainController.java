@@ -55,4 +55,10 @@ public class MainController {
         return "registration";
     }
 
+    @RequestMapping(value = "/permissionError", method = RequestMethod.GET)
+    public String permissionError() {
+        return "permissionError";
+    }
+
+
 }

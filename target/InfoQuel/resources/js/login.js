@@ -53,7 +53,7 @@ function getUsers(){
 
 $.ajax({
     url: ajax_location + "/getUsers",
-    type: "POST",
+    type: "GET",
     dataType: "json",
     contentType: 'application/json;charset=utf-8',
     mimeType: 'application/json',

@@ -31,13 +31,13 @@ public class UsersController {
     private MailService mailService;
 
 
-    @RequestMapping(value = "/getUsers", method = RequestMethod.POST)
+    @RequestMapping(value = "/getUsers", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<User>> getUsers() {
 
 
         List<User> usList = userService.findAll();
-
+        userService.checkHibernet();
         return ResponseEntity.ok(usList);
 
     }

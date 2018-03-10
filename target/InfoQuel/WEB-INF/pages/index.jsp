@@ -47,7 +47,7 @@
             </div>
     </div>
     <div class="content">
-
+        <%@include file="include/login.jsp"%>
     </div>
 
 
