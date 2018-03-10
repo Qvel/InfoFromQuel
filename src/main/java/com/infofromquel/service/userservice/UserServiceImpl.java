@@ -1,6 +1,7 @@
 package com.infofromquel.service.userservice;
 
 import com.infofromquel.dao.UserDao;
+import com.infofromquel.entity.Filter;
 import com.infofromquel.entity.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -52,14 +53,18 @@ public class UserServiceImpl implements UserService{
         }
     }
 
-    public void checkHibernet(){
+    public void checkHibernet(Filter filter){
         LOG.debug("In start of Hibernate");
         Session session = sessionFactory.getCurrentSession();
         LOG.debug("After get session Hibernate");
         LOG.debug("After begin of transaction Hibernate");
-        String sql = "select version()";
-        String result = (String) session.createNativeQuery(sql).getSingleResult();
-        LOG.debug("Check hibernate = {} " + result);
+        //String sql = "select version()";
+        //String result = (String) session.createNativeQuery(sql).getSingleResult();
+        //LOG.debug("Check hibernate = {} " + result);
+        LOG.debug("HELLO WORLD");
+        LOG.debug("HELLO WORLD" + filter.getName());
+        LOG.debug("filter" + filter);
+        session.save(filter);
 
     }
 }

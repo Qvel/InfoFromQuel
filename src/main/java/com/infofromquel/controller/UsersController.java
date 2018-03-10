@@ -2,6 +2,7 @@ package com.infofromquel.controller;
 
 
 import com.infofromquel.entity.EmailTemplates;
+import com.infofromquel.entity.Filter;
 import com.infofromquel.entity.User;
 import com.infofromquel.service.mail.MailService;
 import com.infofromquel.service.userservice.UserService;
@@ -37,7 +38,9 @@ public class UsersController {
 
 
         List<User> usList = userService.findAll();
-        userService.checkHibernet();
+       // Filter filter = new Filter();
+       // filter.setName("Footbool");
+       // userService.checkHibernet(filter);
         return ResponseEntity.ok(usList);
 
     }

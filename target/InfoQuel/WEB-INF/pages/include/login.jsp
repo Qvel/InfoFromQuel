@@ -1,6 +1,20 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>All events for your rest</title>
+    <meta name="description" content="Посмотри чем занимаются в твоем городе и присоединяйся к нам!" />
+    <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico"/>" type="image/x-icon">
+    <link rel="icon" href="<c:url value="/resources/images/favicon.ico"/>" type="image/x-icon">
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
 <sec:authorize access="isAuthenticated()" >
     <div class="container-fluid">
         <div class="row">
@@ -33,7 +47,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form id="login-form" role="form" action="<c:url value="/" />" method="post" class="form-signin" style="display: block;">
+                                <form id="login-form" role="form" action="<c:url value="/login" />" method="post" class="form-signin" style="display: block;">
                                     <div class="form-group">
                                         <input type="text" name="j_username" id="j_username" tabindex="1" class="form-control" placeholder="Username" value="">
                                     </div>
@@ -90,3 +104,5 @@
         </div>
     </div>
 </sec:authorize>
+</body>
+</html>

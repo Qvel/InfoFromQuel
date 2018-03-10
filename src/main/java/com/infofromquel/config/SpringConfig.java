@@ -35,8 +35,9 @@ public class SpringConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(getDataSource());
-        //sessionFactory.setPackagesToScan(new String[] { "com.websystique.springmvc.model" });
+        sessionFactory.setPackagesToScan(new String[] { "com.infofromquel.entity" });
         sessionFactory.setHibernateProperties(hibernateProperties());
+
         return sessionFactory;
     }
 

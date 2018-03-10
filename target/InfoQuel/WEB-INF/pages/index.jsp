@@ -38,7 +38,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <sec:authorize access="isAnonymous()" >
                         <li><a class="header-links" href="<c:url value="/registration" />"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a class="header-links" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a class="header-links" href="<c:url value="/login" />"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()" >
                         <li>Hi , <security:authentication property="principal.username" /><a class="header-links" href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -47,7 +47,7 @@
             </div>
     </div>
     <div class="content">
-        <%@include file="include/login.jsp"%>
+       <%-- <%@include file="include/login.jsp"%> --%>
     </div>
 
 
