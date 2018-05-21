@@ -1,6 +1,7 @@
 package com.infofromquel.controller;
 
 
+import com.infofromquel.entity.Role;
 import com.infofromquel.entity.User;
 import com.infofromquel.service.mail.MailService;
 import com.infofromquel.service.userservice.UserService;
@@ -13,7 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -28,9 +34,10 @@ public class UsersController {
     private final MailService mailService;
 
     @Autowired
-    public UsersController(UserService userService, MailService mailService) {
+    public UsersController(User user,UserService userService, MailService mailService) {
         this.userService = userService;
         this.mailService = mailService;
+        this.user = user;
     }
 
 
@@ -59,10 +66,11 @@ public class UsersController {
     }
 
     @RequestMapping(value = "/createUser" ,method = RequestMethod.POST)
-    public ResponseEntity<User> createUser(
+    public ResponseEntity<Object> createUser(
              @RequestParam String login,
              @RequestParam String email,
-             @RequestParam String password
+             @RequestParam String password,
+             @RequestParam("file") MultipartFile multipartFile
 
     ){
 
@@ -70,8 +78,33 @@ public class UsersController {
                              " login " + login +
                              ";email " + email +
                              ";password " + password);
+        user.setEmail(email);
+        user.setName(login);
+        user.setPassword(password);
+        user.setExist(false);
+        user.setRoles(Collections.singleton(new Role(2,"USER")));
 
-
+        /*
+        Work with files
+        */
+        LOG.debug("Work with logo");
+        LOG.debug("size = " + multipartFile.getSize());
+        LOG.debug("name = " + multipartFile.getOriginalFilename());
+        String directory = "Q:" + File.separator + "work"
+                          + File.separator + "InfoFromQuel" + File.separator + "infoFromQuel" + File.separator
+                          + "src" + File.separator + "main" + File.separator
+                          + "webapp" + File.separator + "resources" + File.separator + "logos"
+                          + File.separator + user.hashCode() + ".jpg";
+        File logo = new File(directory);
+        LOG.debug(logo.getAbsolutePath());
+        LOG.debug(logo.getPath());
+        LOG.debug(logo.getParentFile().mkdirs());
+        try {
+            multipartFile.transferTo(logo);
+        }catch (IOException ex){
+            LOG.error("ERROR while upload logo " + Arrays.toString(ex.getStackTrace()));
+            return new ResponseEntity<>("Invalid File",HttpStatus.BAD_REQUEST);
+        }
         /*
         if(userService.findUserByEmail(email)){
             LOG.debug("User Exist");
@@ -81,11 +114,9 @@ public class UsersController {
 
         LOG.debug("User not exist");
 
-        user.setEmail(email);
-        user.setName(login);
-        user.setPassword(password);
-        user = userService.createUser(user);
-        LOG.debug(user.getId() + " "  + user.getRoles());
+
+        //user = userService.createUser(user);
+        //LOG.debug(user.getId() + " "  + user.getRoles());
         //mailService.sendHtmlEmail(user,EmailTemplates.REGISTRATION_TEMPLATE,EmailTemplates.REGISTRATION_SUBJECT);
 
         return ResponseEntity.ok(user);

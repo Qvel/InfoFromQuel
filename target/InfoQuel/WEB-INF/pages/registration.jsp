@@ -15,13 +15,14 @@
 </head>
 <body>
     <h1>Registration</h1>
-    <div class="RegistrationForm">
-        <input type="text" class="UserName" placeholder="login">
-        <input type="email" class="UserEmail" placeholder="email">
-        <input type="password" class="UserPassword" placeholder="password">
-        <input type="password" class="RetryPassword" placeholder="repeat password">
+    <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+        <input type="text" name="login" placeholder="login">
+        <input type="email" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="password">
+        <input type="file" name="file" />
         <button class="RegistrationButton">login</button>
-    </div>
+        <button class="Check">check</button>
+    </form>
 
 
 

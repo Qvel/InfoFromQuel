@@ -7,11 +7,13 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 public class WebDispatcherServlet implements WebApplicationInitializer {
+
     public void onStartup(ServletContext servletContext) throws ServletException {
 
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
@@ -33,7 +35,5 @@ public class WebDispatcherServlet implements WebApplicationInitializer {
 
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
-
-
     }
 }

@@ -1,22 +1,28 @@
 var ajax_location = "http://localhost:8080/InfoQuel";
 $(document).ready(function() {
 
-    getUsers();
-
+    //getUsers();
+    
+    $(".Check").click(
+      function () {
+          console.log("Start check");
+          var logo = $(".logo").prop('files');
+          console.log(logo);
+      }  
+    );
+    
     $(".RegistrationButton").click(
-        function(){
-           var login = $(".UserName").val();
-           var email = $(".UserEmail").val();
-           var password = $(".UserPassword").val();
-           var retrypassword = $(".RetryPassword").val();
+        function(event){
 
-           console.log("login = " + login + "; email = " + email + "; password = " + password);
 
-           if(password === retrypassword){
-               registration(login,email,password);
+            event.preventDefault()
+            registration();
+
+           /*if(password === retrypassword){
+              // registration(logo);
            }else{
                console.log("passwords aren't the same");
-           }
+           }*/
 
         }
     );
@@ -25,12 +31,22 @@ $(document).ready(function() {
 
 
 
-function registration(login,email,password){
+function registration(){
+
+    var form = $("#fileUploadForm")[0];
+    var data = new FormData(form);
+
     $.ajax({
         url: ajax_location + "/createUser",
         type: "POST",
-        data:{'login':login,'email':email,'password':password},
-        dataType: "json",
+        enctype: 'multipart/form-data',
+        //data:{'login':login,'email':email,'password':password,'file':logo},
+        data:data,
+        /*contentType:'multipart/form-data;boundary=45',
+        enctype:'multipart/form-data',*/
+        processData: false, //prevent jQuery from automatically transforming the data into a query string
+        contentType: false,
+        cache: false,
         success: registrationSuccess,
         error: registrationError
     });
@@ -51,7 +67,7 @@ function getUsers(){
 
 $.ajax({
     url: ajax_location + "/getUsers",
-    type: "POST",
+    type: "GET",
     dataType: "json",
     contentType: 'application/json',
     mimeType: 'application/json',
