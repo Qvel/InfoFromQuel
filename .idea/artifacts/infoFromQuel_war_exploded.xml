@@ -18,15 +18,15 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.9.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.10.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.3.3.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.10.RELEASE" />
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.10.RELEASE" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.43" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:4.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:4.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="Maven: javax.mail:mail:1.4.3" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
@@ -41,7 +41,6 @@
           <element id="library" level="project" name="Maven: org.jboss:jandex:2.0.3.Final" />
           <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.3.0" />
           <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
-          <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
           <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-entitymanager:5.2.14.Final" />
           <element id="library" level="project" name="Maven: net.bytebuddy:byte-buddy:1.6.14" />

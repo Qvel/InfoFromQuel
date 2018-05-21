@@ -27,7 +27,7 @@ public class CustomUserDetails extends User implements UserDetails {
     }
 
     public String getUsername() {
-        return super.getName();
+        return super.getEmail();
     }
 
     public boolean isAccountNonExpired() {

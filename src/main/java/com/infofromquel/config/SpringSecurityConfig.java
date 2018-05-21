@@ -15,8 +15,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @ComponentScan(basePackages = "com.infofromquel.service.security")
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final AuthenticationUsers authProvider;
+
     @Autowired
-    private AuthenticationUsers authProvider;
+    public SpringSecurityConfig(AuthenticationUsers authProvider) {
+        this.authProvider = authProvider;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -44,6 +48,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                     .tokenValiditySeconds(1209600)
                 .and()
                     .exceptionHandling().accessDeniedPage("/permissionError");
+
     }
 
 

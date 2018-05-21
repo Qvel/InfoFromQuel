@@ -1,15 +1,14 @@
 package com.infofromquel.controller;
 
 
-import com.infofromquel.entity.EmailTemplates;
-import com.infofromquel.entity.Filter;
 import com.infofromquel.entity.User;
 import com.infofromquel.service.mail.MailService;
 import com.infofromquel.service.userservice.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,26 +21,24 @@ public class UsersController {
 
     private static final Logger LOG = Logger.getLogger(UsersController.class);
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
     private User user;
 
+    private final MailService mailService;
+
     @Autowired
-    private MailService mailService;
+    public UsersController(UserService userService, MailService mailService) {
+        this.userService = userService;
+        this.mailService = mailService;
+    }
 
 
     @RequestMapping(value = "/getUsers", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<User>> getUsers() {
-
-
         List<User> usList = userService.findAll();
-       // Filter filter = new Filter();
-       // filter.setName("Footbool");
-       // userService.checkHibernet(filter);
-        return ResponseEntity.ok(usList);
+        return new ResponseEntity<>(usList,HttpStatus.OK);
 
     }
 

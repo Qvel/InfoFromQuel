@@ -1,8 +1,5 @@
 package com.infofromquel.entity;
 
-
-
-
 public enum EmailTemplates {
 
     REGISTRATION_TEMPLATE ("<h3 style='color:red' >Hello World!</h3>" +

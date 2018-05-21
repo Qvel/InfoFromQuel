@@ -23,8 +23,12 @@ import java.util.Properties;
 @ComponentScan(basePackages = {"com.infofromquel.dao","com.infofromquel.service","com.infofromquel.entity"})
 public class SpringConfig {
 
+    private final Environment env;
+
     @Autowired
-    private Environment env;
+    public SpringConfig(Environment env) {
+        this.env = env;
+    }
 
     @Bean
     public JdbcTemplate getJdbcTemplate() {
@@ -35,7 +39,7 @@ public class SpringConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(getDataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.infofromquel.entity" });
+        sessionFactory.setPackagesToScan("com.infofromquel.entity");
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;

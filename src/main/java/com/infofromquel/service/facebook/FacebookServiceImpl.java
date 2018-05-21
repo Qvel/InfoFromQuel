@@ -1,4 +1,5 @@
 
+/*
 package com.infofromquel.service.facebook;
 
 import com.google.gson.JsonArray;
@@ -56,14 +57,14 @@ public class FacebookServiceImpl implements FacebookService{
         }catch(Exception e){
             System.out.println("Have exeption in url method getBitok");
         }
-
+        LOG.debug("Response from fb" + allResponse);
         return allResponse;
     }
-    /*
+
         Доделать остальные фиелды , детальнее
         https://developers.facebook.com/docs/graph-api/reference/event
-     */
-    @Override
+
+   @Override
     public List<Event> parseToEntity(JsonObject jsonObject) {
 
         LOG.trace("Start parsing");
@@ -141,3 +142,4 @@ public class FacebookServiceImpl implements FacebookService{
     }
 }
 
+*/
