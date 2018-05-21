@@ -46,11 +46,7 @@ public class Role implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Role{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "Role{" + "id=" + id + ", name= " + name +"}";
     }
 
     @Override

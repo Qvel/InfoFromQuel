@@ -18,6 +18,7 @@ public class User implements Serializable {
         this.password = user.getPassword();
         this.email = user.getEmail();
         this.roles = user.getRoles();
+        this.isExist = user.isExist();
     }
 
     public User() {
@@ -101,15 +102,13 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("User{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", password='").append(password).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", roles=").append(roles);
-        sb.append(", isExist=").append(isExist);
-        sb.append('}');
-        return sb.toString();
+        return "User{" + "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", roles=" + roles +
+                ", isExist=" + isExist +
+                '}';
     }
 
     @Override
