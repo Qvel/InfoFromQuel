@@ -1,9 +1,8 @@
 package com.infofromquel.controller;
 
 
-import com.infofromquel.entity.Role;
+
 import com.infofromquel.entity.User;
-import com.infofromquel.service.mail.MailService;
 import com.infofromquel.service.userservice.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -37,9 +33,8 @@ public class UsersController {
 
 
     @Autowired
-    public UsersController(User user,UserService userService) {
+    public UsersController(UserService userService) {
         this.userService = userService;
-        this.user = user;
     }
 
     /**

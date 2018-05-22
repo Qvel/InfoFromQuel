@@ -9,10 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>All events for your rest</title>
     <meta name="description" content="Посмотри чем занимаются в твоем городе и присоединяйся к нам!" />
-    <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico"/>" type="image/x-icon">
-    <link rel="icon" href="<c:url value="/resources/images/favicon.ico"/>" type="image/x-icon">
-    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%@include file="cssModules.jsp"%>
 </head>
 <body>
 
