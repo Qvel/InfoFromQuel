@@ -14,11 +14,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
+/**
+ * Controller for returning jsp files
+ * @author Serhii Zhuravlov
+ */
 @Controller
 public class MainController {
 
     private static final Logger LOG = Logger.getLogger(MainController.class);
 
+    /**
+     * @param principal {@link Principal}
+     * @return index page
+     */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String mainPage(Principal principal) {
         LOG.debug("Hi");
@@ -30,7 +38,10 @@ public class MainController {
         return "index";
     }
 
-
+    /**
+     * @param principal {@link Principal}
+     * @return admin page
+     */
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String getAdmin(Principal principal){
         if(principal != null){
@@ -39,6 +50,11 @@ public class MainController {
         return "admin";
     }
 
+    /**
+     * @param request {@link HttpServletRequest}
+     * @param response {@link HttpServletResponse}
+     * @return logout status
+     */
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -50,16 +66,25 @@ public class MainController {
         return "redirect:/?logout";
     }
 
+    /**
+     * @return registration page
+     */
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String mainPage() {
         return "registration";
     }
 
+    /**
+     * @return permissionError page
+     */
     @RequestMapping(value = "/permissionError", method = RequestMethod.GET)
     public String permissionError() {
         return "permissionError";
     }
 
+    /**
+     * @return login page
+     */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         return "include/login";

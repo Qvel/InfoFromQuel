@@ -4,6 +4,10 @@ import com.infofromquel.entity.User;
 
 import java.util.List;
 
+/**
+ * Api of user service
+ * @author Serhii Zhuravlov
+ */
 public interface UserService {
 
     List<User> findAll();

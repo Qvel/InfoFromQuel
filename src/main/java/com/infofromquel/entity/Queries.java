@@ -1,5 +1,9 @@
 package com.infofromquel.entity;
 
+/**
+ * Enum for Queries
+ * @author Serhii Zhuravlov
+ */
 public enum Queries {
 
     FIND_ALL_USERS_HQL ("FROM User");

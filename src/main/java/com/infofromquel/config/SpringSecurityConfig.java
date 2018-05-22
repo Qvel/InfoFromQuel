@@ -9,6 +9,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+/**
+ * Configuration for Security part
+ * <p>Scanning beans for com.infofromquel.service.security </p>
+ * @author Serhii Zhuravlov
+ */
 
 @Configuration
 @EnableWebSecurity
@@ -22,12 +27,21 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         this.authProvider = authProvider;
     }
 
+    /**
+     * Override spring security user fields mechanism
+     * @param auth {@link AuthenticationManagerBuilder}
+     * @throws Exception if spring have problems with configuration
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(authProvider);
     }
 
-
+    /**
+     * Main configuration of access to resources
+     * @param httpSecurity {@link HttpSecurity}
+     * @throws Exception if spring have problems with configuration
+     */
     @Override
     protected void configure (HttpSecurity httpSecurity) throws Exception{
         httpSecurity

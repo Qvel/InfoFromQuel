@@ -12,9 +12,14 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
+/**
+ * Main configuration of Spring Context.
+ * Registration Configurations {@link SpringConfig},{@link WebConfig},{@link SpringSecurityConfig},{@link PropertiesConfig}.
+ * @author Serhii Zhuravlov
+ */
 public class WebDispatcherServlet implements WebApplicationInitializer {
 
-    public void onStartup(ServletContext servletContext) throws ServletException {
+    public void onStartup(ServletContext servletContext) {
 
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
         context.register(SpringConfig.class,WebConfig.class,SpringSecurityConfig.class,PropertiesConfig.class);
@@ -22,7 +27,7 @@ public class WebDispatcherServlet implements WebApplicationInitializer {
 
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcher", new DispatcherServlet(context));
 
-        // Manages the lifecycle of the root application context
+        /* Manages the lifecycle of the root application context */
         servletContext.addListener(new ContextLoaderListener(context));
 
         /* Spring Security Registration */
@@ -30,8 +35,6 @@ public class WebDispatcherServlet implements WebApplicationInitializer {
         DelegatingFilterProxy filter  = new DelegatingFilterProxy("springSecurityFilterChain");
 
         servletContext.addFilter("springSecurityFilterChain",filter).addMappingForUrlPatterns(null,false,"/*");
-
-        /* */
 
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");

@@ -3,7 +3,6 @@ package com.infofromquel.service.mail;
 import com.infofromquel.entity.EmailTemplates;
 import com.infofromquel.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -12,14 +11,26 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.List;
 
-
+/**
+ * Service for sending emails
+ * @author Serhii Zhuravlov
+ */
 @Service
 public class MailServiceImpl implements MailService {
 
+    private final JavaMailSender getJavaMailSender;
+
     @Autowired
-    private JavaMailSender getJavaMailSender;
+    public MailServiceImpl(JavaMailSender getJavaMailSender) {
+        this.getJavaMailSender = getJavaMailSender;
+    }
 
-
+    /**
+     * Method for sending message
+     * @param user {@link User}
+     * @param template {@link EmailTemplates}
+     * @param subject message
+     */
     @Override
     public void sendHtmlEmail(User user, EmailTemplates template, String subject)  {
         MimeMessage mimeMessage = getJavaMailSender.createMimeMessage();
@@ -35,16 +46,22 @@ public class MailServiceImpl implements MailService {
         getJavaMailSender.send(mimeMessage);
     }
 
+    /**
+     * Method to set into message links
+     * @param template {@link EmailTemplates}
+     * @param links list of links
+     * @return {@link EmailTemplates} with links
+     */
     @Override
-    public String setLinksIntoMessage(String template, List<String> links){
+    public EmailTemplates setLinksIntoMessage(EmailTemplates template, List<String> links){
 
-        String correctTemplate = template;
+        String correctTemplate = template.getTemplate();
 
         for(int i = 0 ; i<links.size() ; i++){
             correctTemplate = correctTemplate.replace(String.valueOf(i),links.get(i)) + " ";
 
         }
 
-        return  correctTemplate;
+        return template;
     }
 }

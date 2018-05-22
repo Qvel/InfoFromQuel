@@ -5,10 +5,14 @@ import com.infofromquel.entity.User;
 
 import java.util.List;
 
+/**
+ * Api for Mail Sender
+ * @author Serhii Zhuravlov
+ */
 public interface MailService {
 
     void sendHtmlEmail(User user, EmailTemplates template, String subject);
 
-    String setLinksIntoMessage(String template, List<String> links);
+    EmailTemplates setLinksIntoMessage(EmailTemplates template, List<String> links);
 
 }

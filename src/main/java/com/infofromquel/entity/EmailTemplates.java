@@ -1,5 +1,9 @@
 package com.infofromquel.entity;
 
+/**
+ * Enum for Email Templates
+ * @author Serhii Zhuravlov
+ */
 public enum EmailTemplates {
 
     REGISTRATION_TEMPLATE ("<h3 style='color:red' >Hello World!</h3>" +

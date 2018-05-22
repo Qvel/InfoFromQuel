@@ -7,6 +7,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * This Entity for Role of User {Admin , User , Moderator or others}
+ * @author Serhii Zhuravlov
+ */
 @Component
 @Entity
 @Table(name="roles")
@@ -21,9 +25,10 @@ public class Role implements Serializable {
     }
 
     @Id
-    @Column(name="id")
+    @Column(name="id",nullable = false)
+
     private int id;
-    @Column(name="name")
+    @Column(name="name",nullable = false)
     private String name;
 
     public int getId() {

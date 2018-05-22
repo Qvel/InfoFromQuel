@@ -8,12 +8,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+/**
+ * Class for implementing {@link UserDetails}
+ * @author Serhii Zhuravlov
+ */
 public class CustomUserDetails extends User implements UserDetails {
 
     public CustomUserDetails(User user) {
         super(user);
     }
 
+    /**
+     * @return roles of user
+     */
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
         return getRoles()
@@ -22,10 +29,16 @@ public class CustomUserDetails extends User implements UserDetails {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * @return password of user
+     */
     public String getPassword() {
         return super.getPassword();
     }
 
+    /**
+     * @return name of user
+     */
     public String getUsername() {
         return super.getEmail();
     }

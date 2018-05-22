@@ -22,6 +22,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Api for User options
+ * @author Serhii Zhuravlov
+ */
 @Controller
 public class UsersController {
 
@@ -40,7 +44,9 @@ public class UsersController {
         this.user = user;
     }
 
-
+    /**
+     * @return all users in the systems
+     */
     @RequestMapping(value = "/getUsers", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<User>> getUsers() {
@@ -49,6 +55,10 @@ public class UsersController {
 
     }
 
+    /**
+     * @param id id of user
+     * @return user with such id
+     */
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<User> getUser(
@@ -60,17 +70,20 @@ public class UsersController {
         return ResponseEntity.ok(user);
     }
 
-    @RequestMapping(value = "/userPage" , method = RequestMethod.GET)
-    public String getUserPage(){
-        return "user";
-    }
-
+    /**
+     * Api for creation object {@link User}
+     * @param login login of user
+     * @param email email of user
+     * @param password password of user
+     * @param userLogo photo of User
+     * @return new user {@link User}
+     */
     @RequestMapping(value = "/createUser" ,method = RequestMethod.POST)
     public ResponseEntity<Object> createUser(
              @RequestParam String login,
              @RequestParam String email,
              @RequestParam String password,
-             @RequestParam("file") MultipartFile multipartFile
+             @RequestParam("file") MultipartFile userLogo
 
     ){
 
@@ -88,8 +101,8 @@ public class UsersController {
         Work with files
         */
         LOG.debug("Work with logo");
-        LOG.debug("size = " + multipartFile.getSize());
-        LOG.debug("name = " + multipartFile.getOriginalFilename());
+        LOG.debug("size = " + userLogo.getSize());
+        LOG.debug("name = " + userLogo.getOriginalFilename());
         String directory = "Q:" + File.separator + "work"
                           + File.separator + "InfoFromQuel" + File.separator + "infoFromQuel" + File.separator
                           + "src" + File.separator + "main" + File.separator
@@ -100,7 +113,7 @@ public class UsersController {
         LOG.debug(logo.getPath());
         LOG.debug(logo.getParentFile().mkdirs());
         try {
-            multipartFile.transferTo(logo);
+            userLogo.transferTo(logo);
         }catch (IOException ex){
             LOG.error("ERROR while upload logo " + Arrays.toString(ex.getStackTrace()));
             return new ResponseEntity<>("Invalid File",HttpStatus.BAD_REQUEST);
@@ -115,7 +128,7 @@ public class UsersController {
         LOG.debug("User not exist");
 
 
-        //user = userService.createUser(user);
+        user = userService.createUser(user);
         //LOG.debug(user.getId() + " "  + user.getRoles());
         //mailService.sendHtmlEmail(user,EmailTemplates.REGISTRATION_TEMPLATE,EmailTemplates.REGISTRATION_SUBJECT);
 

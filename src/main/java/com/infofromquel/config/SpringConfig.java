@@ -18,6 +18,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+/**
+ * Configuration for main beans JdbcTemplate,JavaMailSender,Hibernate
+ * Scanning packages for beans : com.infofromquel.dao ,com.infofromquel.service,com.infofromquel.entity
+ * @author Serhii Zhuravlov
+ */
+
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"com.infofromquel.dao","com.infofromquel.service","com.infofromquel.entity"})

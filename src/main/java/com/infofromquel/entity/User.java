@@ -6,6 +6,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 
+/**
+ * Entity for User in the system
+ * @author Serhii Zhuravlov
+ */
 @Component
 @Entity
 @Table(name = "users")
@@ -25,29 +29,31 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "login")
+    @Column(name = "login",nullable = false)
     private String name;
-    @Column(name = "password")
+    @Column(name = "password",nullable = false)
     private String password;
-    @Column(name = "email")
+    @Column(name = "email",nullable = false)
     private String email;
     @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
     @JoinTable(
             name="users_roles",
             joinColumns = {
                     @JoinColumn(
-                            name= "user_id"
+                            name= "user_id",
+                            nullable = false
                     )
             },
             inverseJoinColumns = {
                     @JoinColumn(
-                            name = "role_id"
+                            name = "role_id",
+                            nullable = false
                     )
             }
 
     )
     private Set<Role> roles = new HashSet<>();
-    @Column(name = "is_exist")
+    @Column(name = "is_exist",nullable = false)
     private boolean isExist;
 
 

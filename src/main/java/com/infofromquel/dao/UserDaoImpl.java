@@ -1,6 +1,5 @@
 package com.infofromquel.dao;
 
-import com.infofromquel.entity.Role;
 import com.infofromquel.entity.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -10,15 +9,17 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
 import java.util.List;
 
 
-
-@Service
+/**
+ * DAO repository for {@link User}
+ * @author Serhii Zhuravlov
+ */
+@Repository
 @Transactional
 public class UserDaoImpl implements UserDao{
 
@@ -31,6 +32,9 @@ public class UserDaoImpl implements UserDao{
         this.sessionFactory = sessionFactory;
     }
 
+    /**
+     * @return all users
+     */
     public List<User> findAll() {
         Session session = sessionFactory.getCurrentSession();
         CriteriaQuery<User> criteriaQuery = session.getCriteriaBuilder().createQuery(User.class);
@@ -40,6 +44,10 @@ public class UserDaoImpl implements UserDao{
         return users;
     }
 
+    /**
+     * @param email email of user
+     * @return user with such email
+     */
     public User findUserByEmail(String email){
         LOG.debug("UserDaoImpl.findUserByEmail " + email);
         Session session = sessionFactory.getCurrentSession();
@@ -52,6 +60,10 @@ public class UserDaoImpl implements UserDao{
         return injectUser;
     }
 
+    /**
+     * @param id id of user
+     * @return user with such id
+     */
     public User findUserById(int id){
         LOG.debug("UserDaoImpl.findUserById " + id);
         Session session = sessionFactory.getCurrentSession();
@@ -64,11 +76,13 @@ public class UserDaoImpl implements UserDao{
         return injectUser;
     }
 
+    /**
+     * @param user {@link User}
+     * @return new user
+     */
     public User createUser(User user){
         LOG.debug("UserDaoImpl.createUser " + user);
         Session session = sessionFactory.getCurrentSession();
-        Role role = new Role(2, "USER");
-        user.setRoles(Collections.singleton(role));
         session.saveOrUpdate(user);
         LOG.debug("User = {}" + user);
         return injectUser;
