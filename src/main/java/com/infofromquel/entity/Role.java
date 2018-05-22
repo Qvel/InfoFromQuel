@@ -19,7 +19,7 @@ public class Role implements Serializable {
     public Role() {
     }
 
-    public Role(int id, String name) {
+    public Role(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -27,15 +27,15 @@ public class Role implements Serializable {
     @Id
     @Column(name="id",nullable = false)
 
-    private int id;
+    private Long id;
     @Column(name="name",nullable = false)
     private String name;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -59,7 +59,7 @@ public class Role implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Role role = (Role) o;
-        return id == role.id &&
+        return id.equals(role.id) &&
                 Objects.equals(name, role.name);
     }
 

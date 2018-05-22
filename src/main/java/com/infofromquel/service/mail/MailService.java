@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface MailService {
 
-    void sendHtmlEmail(User user, EmailTemplates template, String subject);
+    void sendHtmlEmail(User user, EmailTemplates template, EmailTemplates subject);
 
     EmailTemplates setLinksIntoMessage(EmailTemplates template, List<String> links);
 

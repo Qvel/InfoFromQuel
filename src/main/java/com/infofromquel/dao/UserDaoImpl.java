@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -55,7 +56,11 @@ public class UserDaoImpl implements UserDao{
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> user = criteriaQuery.from(User.class);
         criteriaQuery.select(user).where(criteriaBuilder.equal(user.get("email"),email));
-        injectUser = session.createQuery(criteriaQuery).getSingleResult();
+        try {
+            injectUser = session.createQuery(criteriaQuery).getSingleResult();
+        }catch (NoResultException e){
+            return null;
+        }
         LOG.debug("User = {} " + injectUser);
         return injectUser;
     }

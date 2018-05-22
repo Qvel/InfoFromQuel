@@ -35,12 +35,10 @@ public class UsersController {
 
     private User user;
 
-    private final MailService mailService;
 
     @Autowired
-    public UsersController(User user,UserService userService, MailService mailService) {
+    public UsersController(User user,UserService userService) {
         this.userService = userService;
-        this.mailService = mailService;
         this.user = user;
     }
 
@@ -80,58 +78,21 @@ public class UsersController {
      */
     @RequestMapping(value = "/createUser" ,method = RequestMethod.POST)
     public ResponseEntity<Object> createUser(
-             @RequestParam String login,
-             @RequestParam String email,
-             @RequestParam String password,
+             @RequestParam("login") String login,
+             @RequestParam("email") String email,
+             @RequestParam("password") String password,
              @RequestParam("file") MultipartFile userLogo
 
     ){
-
-        LOG.debug("Create user with params = {} " +
-                             " login " + login +
-                             ";email " + email +
-                             ";password " + password);
-        user.setEmail(email);
-        user.setName(login);
-        user.setPassword(password);
-        user.setExist(false);
-        user.setRoles(Collections.singleton(new Role(2,"USER")));
-
-        /*
-        Work with files
-        */
-        LOG.debug("Work with logo");
-        LOG.debug("size = " + userLogo.getSize());
-        LOG.debug("name = " + userLogo.getOriginalFilename());
-        String directory = "Q:" + File.separator + "work"
-                          + File.separator + "InfoFromQuel" + File.separator + "infoFromQuel" + File.separator
-                          + "src" + File.separator + "main" + File.separator
-                          + "webapp" + File.separator + "resources" + File.separator + "logos"
-                          + File.separator + user.hashCode() + ".jpg";
-        File logo = new File(directory);
-        LOG.debug(logo.getAbsolutePath());
-        LOG.debug(logo.getPath());
-        LOG.debug(logo.getParentFile().mkdirs());
-        try {
-            userLogo.transferTo(logo);
-        }catch (IOException ex){
-            LOG.error("ERROR while upload logo " + Arrays.toString(ex.getStackTrace()));
-            return new ResponseEntity<>("Invalid File",HttpStatus.BAD_REQUEST);
-        }
-        /*
         if(userService.findUserByEmail(email)){
             LOG.debug("User Exist");
-            user.setExist(true);
-           return ResponseEntity.ok(user);
-        }*/
-
-        LOG.debug("User not exist");
-
-
-        user = userService.createUser(user);
-        //LOG.debug(user.getId() + " "  + user.getRoles());
-        //mailService.sendHtmlEmail(user,EmailTemplates.REGISTRATION_TEMPLATE,EmailTemplates.REGISTRATION_SUBJECT);
-
+           return new ResponseEntity<>("Such User Exist in the system",HttpStatus.NOT_ACCEPTABLE);
+        }
+        try {
+            user = userService.createUser(login, email, password, userLogo);
+        }catch (IOException e){
+            return new ResponseEntity<>("Invalid File",HttpStatus.BAD_REQUEST);
+        }
         return ResponseEntity.ok(user);
     }
 

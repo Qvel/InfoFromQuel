@@ -15,6 +15,18 @@ import java.util.*;
 @Table(name = "users")
 public class User implements Serializable {
 
+    public User() {
+    }
+
+    public User(Builder builder) {
+        this.name = builder.name;
+        this.password = builder.password;
+        this.email = builder.email;
+        this.roles = builder.roles;
+        this.isExist = builder.isExist;
+        this.logo = builder.logo;
+    }
+
     public User(User user) {
         this.id = user.getId();
         this.name = user.getName();
@@ -22,13 +34,12 @@ public class User implements Serializable {
         this.email = user.getEmail();
         this.roles = user.getRoles();
         this.isExist = user.isExist();
+        this.logo = user.logo;
     }
 
-    public User() {
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(name = "login",nullable = false)
     private String name;
     @Column(name = "password",nullable = false)
@@ -55,13 +66,14 @@ public class User implements Serializable {
     private Set<Role> roles = new HashSet<>();
     @Column(name = "is_exist",nullable = false)
     private boolean isExist;
+    @Column(name = "logo")
+    private String logo;
 
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -105,6 +117,14 @@ public class User implements Serializable {
         isExist = exist;
     }
 
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
     @Override
     public String toString() {
         return "User{" + "id=" + id +
@@ -121,7 +141,7 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id &&
+        return id.equals(user.id) &&
                 isExist == user.isExist &&
                 Objects.equals(name, user.name) &&
                 Objects.equals(password, user.password) &&
@@ -132,5 +152,54 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, password, email, roles, isExist);
+    }
+
+
+    public static class Builder{
+
+        public Builder() {
+        }
+
+        private String name;
+        private String password;
+        private String email;
+        private Set<Role> roles = new HashSet<>();
+        private boolean isExist;
+        private String logo;
+
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setPassword(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Builder setEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder setRoles(Set<Role> roles) {
+            this.roles = roles;
+            return this;
+        }
+
+        public Builder setExist(boolean exist) {
+            isExist = exist;
+            return this;
+        }
+
+        public Builder setLogo(String logo) {
+            this.logo = logo;
+            return this;
+        }
+
+        public User build(){
+            return new User(this);
+        }
     }
 }

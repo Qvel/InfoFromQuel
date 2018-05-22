@@ -32,13 +32,13 @@ public class MailServiceImpl implements MailService {
      * @param subject message
      */
     @Override
-    public void sendHtmlEmail(User user, EmailTemplates template, String subject)  {
+    public void sendHtmlEmail(User user, EmailTemplates template, EmailTemplates subject)  {
         MimeMessage mimeMessage = getJavaMailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, false, "utf-8");
             mimeMessage.setContent(template.getTemplate(), "text/html");
             helper.setTo(user.getName());
-            helper.setSubject(subject);
+            helper.setSubject(subject.getTemplate());
             helper.setFrom("iamquel08@gmail.com");
         } catch (MessagingException e) {
             e.printStackTrace();
