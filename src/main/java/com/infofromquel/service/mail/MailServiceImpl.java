@@ -52,6 +52,7 @@ public class MailServiceImpl implements MailService {
      * @param links list of links
      * @return {@link EmailTemplates} with links
      */
+    //todo: Final parser for links
     @Override
     public EmailTemplates setLinksIntoMessage(EmailTemplates template, List<String> links){
 

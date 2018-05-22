@@ -4,6 +4,7 @@ com\infofromquel\entity\Queries.class
 com\infofromquel\config\WebConfig.class
 com\infofromquel\entity\Role.class
 com\infofromquel\entity\User.class
+com\infofromquel\entity\User$Builder.class
 com\infofromquel\controller\MainController.class
 com\infofromquel\service\userservice\UserServiceImpl.class
 com\infofromquel\service\mail\MailServiceImpl.class
