@@ -8,10 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>All events for your rest</title>
     <meta name="description" content="Посмотри чем занимаются в твоем городе и присоединяйся к нам!" />
-    <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico"/>" type="image/x-icon">
-    <link rel="icon" href="<c:url value="/resources/images/favicon.ico"/>" type="image/x-icon">
-    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%@include file="include/cssModules.jsp"%>
 </head>
 <body>
     <h1>Registration</h1>
@@ -25,9 +22,7 @@
     </form>
 
 
-
-    <script src="<c:url value = "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" />"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%@include file="include/jsFrameworks.jsp"%>
     <script src="<c:url value="/resources/js/registration.js"/>"  type="text/javascript" ></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.infofromquel.controller.UsersController;
 
@@ -18,7 +18,7 @@ import com.infofromquel.controller.UsersController;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.infofromquel.controller")
-public class WebConfig extends WebMvcConfigurerAdapter{
+public class WebConfig implements WebMvcConfigurer {
     /**
      * Configuration for Prefix and Suffix of jsp
      * @return {@link InternalResourceViewResolver}
