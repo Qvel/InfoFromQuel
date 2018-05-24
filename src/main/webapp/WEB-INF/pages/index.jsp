@@ -1,9 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="indexPage">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,12 +10,20 @@
     <meta name="description" content="Посмотри чем занимаются в твоем городе и присоединяйся к нам!" />
     <%@include file="include/cssModules.jsp"%>
 </head>
-<body ng-app>
-<div class="container" >
-    {{2+2}}
-</div>
+<body>
+
+    <%@include file="include/header.jsp" %>
 
     <%--
+
+    <div class="container">
+    <ul ng-controller="ExCtrl">
+        <li ng-repeat="user in phones">
+            <p>{{user.name}}</p>
+            <p>{{user.phone}}</p>
+        </li>
+    </ul>
+</div>
    <div class="header">
            <div class="container">
                <div class="navbar-header">
@@ -57,5 +63,6 @@
 
     <%@include file="include/jsFrameworks.jsp"%>
     <script src="<c:url value="/resources/js/login.js"/>"  type="text/javascript" ></script>
+    <script src="<c:url value="/resources/js/main.js"/>"  type="text/javascript" ></script>
 </body>
 </html>

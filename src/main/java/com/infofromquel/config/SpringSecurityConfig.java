@@ -2,12 +2,16 @@ package com.infofromquel.config;
 
 import com.infofromquel.service.security.AuthenticationUsers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * Configuration for Security part
@@ -20,21 +24,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @ComponentScan(basePackages = "com.infofromquel.service.security")
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final AuthenticationUsers authProvider;
+    private final AuthenticationUsers userDetailsService;
 
     @Autowired
-    public SpringSecurityConfig(AuthenticationUsers authProvider) {
-        this.authProvider = authProvider;
-    }
-
-    /**
-     * Override spring security user fields mechanism
-     * @param auth {@link AuthenticationManagerBuilder}
-     * @throws Exception if spring have problems with configuration
-     */
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(authProvider);
+    public SpringSecurityConfig(AuthenticationUsers userDetailsService) {
+        this.userDetailsService = userDetailsService;
     }
 
     /**
@@ -65,6 +59,34 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
+    /**
+     * Bean for password Encoder
+     * @return {@link PasswordEncoder}
+     */
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
+    /**
+     * Bean for {@link DaoAuthenticationProvider} where was set custom user datails service {@link AuthenticationUsers} and password encoder {@link BCryptPasswordEncoder}
+     * @return {@link DaoAuthenticationProvider}
+     */
+    @Bean
+    public DaoAuthenticationProvider authProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
+
+    /**
+     * Override spring security user fields mechanism
+     * @param auth {@link AuthenticationManagerBuilder}
+     */
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth){
+        auth.authenticationProvider(authProvider());
+    }
 
 }

@@ -10,7 +10,7 @@
     <meta name="description" content="Посмотри чем занимаются в твоем городе и присоединяйся к нам!" />
     <%@include file="include/cssModules.jsp"%>
 </head>
-<body>
+<body ng-app>
     <h1>Registration</h1>
     <form method="POST" enctype="multipart/form-data" id="fileUploadForm">
         <input type="text" name="login" placeholder="login">
@@ -20,7 +20,7 @@
         <button class="RegistrationButton">login</button>
         <button class="Check">check</button>
     </form>
-
+    {{2+2}}
 
     <%@include file="include/jsFrameworks.jsp"%>
     <script src="<c:url value="/resources/js/registration.js"/>"  type="text/javascript" ></script>

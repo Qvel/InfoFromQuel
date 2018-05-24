@@ -7,6 +7,7 @@ import com.infofromquel.entity.User;
 import com.infofromquel.service.mail.MailService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,13 +27,15 @@ public class UserServiceImpl implements UserService{
     private static final Logger LOG = Logger.getLogger(UserServiceImpl.class);
 
     @Autowired
-    public UserServiceImpl(UserDao userDao,MailService mailService){
+    public UserServiceImpl(UserDao userDao,MailService mailService,PasswordEncoder passwordEncoder){
         this.userDao = userDao;
         this.mailService = mailService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     private UserDao userDao;
     private MailService mailService;
+    private PasswordEncoder passwordEncoder;
 
     /**
      * @return all user
@@ -69,7 +72,7 @@ public class UserServiceImpl implements UserService{
         User user = new User.Builder()
                 .setEmail(email)
                 .setName(login)
-                .setPassword(password)
+                .setPassword(passwordEncoder.encode(password))
                 .setExist(false)
                 .setRoles(Collections.singleton(new Role(2L,"USER")))
                 .build();
