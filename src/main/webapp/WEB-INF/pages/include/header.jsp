@@ -35,8 +35,11 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <sec:authorize access="isAnonymous()" >
-                    <li><a class="header-links" href="<c:url value="/registration" />"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
-                    <li><a class="header-links" href="<c:url value="/login" />"><span class="glyphicon glyphicon-log-in"></span> Войти </a></li>
+                    <li><a class="header-links" data-toggle="modal" data-target="#registration" ><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
+                    <li><a class="header-links" data-toggle="modal" data-target="#logIn"><span class="glyphicon glyphicon-log-in"></span> Войти </a></li>
+                    <c:if test="${param.error != null}">
+                        <li><a class="header-links">Логин или пароль не верные</a></li>
+                    </c:if>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()" >
                     <li><a class="header-links">Привет , <security:authentication property="principal.username" /></a></li>
@@ -46,3 +49,69 @@
         </div>
     </div>
 </nav>
+
+<!-- Registration Modal -->
+<div id="registration" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        <div class="modal-content" ng-controller="registrationCtrl">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Регистрация</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="reg_email">Почта:</label>
+                    <input type="email" class="form-control" id="reg_email" ng-model="userEmail">
+                </div>
+                <div class="form-group">
+                    <label for="reg_log">Имя:</label>
+                    <input type="text" class="form-control" id="reg_log" ng-model="userName">
+                </div>
+                <div class="form-group">
+                    <label for="reg_pwd">Пароль:</label>
+                    <input type="password" class="form-control" id="reg_pwd" ng-model="userPassword">
+                </div>
+                <div class="form-group">
+                    <label for="reg_rep_pw">Повторить пароль:</label>
+                    <input type="password" class="form-control" id="reg_rep_pw">
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox">Пользовательское соглашение</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-success" ng-click="registration(userEmail,userName,userPassword)">Зарегистрироваться</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Log in Modal -->
+<div id="logIn" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Войти как :</h4>
+            </div>
+            <form action="<c:url value="/login" />" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="log_email">Почта:</label>
+                        <input type="email" name="j_username" class="form-control" id="log_email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="log_pw">Пароль:</label>
+                        <input type="password" name="j_password" class="form-control" id="log_pw"  required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <input type="submit" class="btn btn-success" value="Войти" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

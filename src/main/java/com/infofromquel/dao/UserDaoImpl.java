@@ -69,7 +69,7 @@ public class UserDaoImpl implements UserDao{
      * @param id id of user
      * @return user with such id
      */
-    public User findUserById(int id){
+    public User findUserById(Long id){
         LOG.debug("UserDaoImpl.findUserById " + id);
         Session session = sessionFactory.getCurrentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
@@ -88,8 +88,21 @@ public class UserDaoImpl implements UserDao{
     public User createUser(User user){
         LOG.debug("UserDaoImpl.createUser " + user);
         Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(user);
+        session.save(user);
         LOG.debug("User = {}" + user);
-        return injectUser;
+        return user;
+    }
+
+    /**
+     * @param user {@link User}
+     * @return {@link User}
+     */
+    @Override
+    public User updateUser(User user) {
+        LOG.debug("UserDaoImpl.updateUser " + user);
+        Session session = sessionFactory.getCurrentSession();
+        session.update(user);
+        LOG.debug("User = {}" + user);
+        return user;
     }
 }

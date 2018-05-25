@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -55,40 +52,47 @@ public class UsersController {
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<User> getUser(
-            @RequestParam int id
+            @RequestParam("id") Long id
     ) {
-
         user = userService.findUserById(id);
+        return ResponseEntity.ok(user);
+    }
 
+    /**
+     * Api for updating logo of  {@link User}
+     * @param id id of user
+     * @param userLogo photo of User
+     * @return new user {@link User}
+     */
+    @RequestMapping(value = "/updateAvatar" ,method = RequestMethod.POST)
+    public ResponseEntity<Object> createUser(
+             @RequestParam("id") Long id,
+             @RequestParam("file") MultipartFile userLogo
+
+    ){
+        try {
+            user = userService.updateAvatar(id, userLogo);
+        }catch (IOException e){
+            return new ResponseEntity<>("Invalid File",HttpStatus.BAD_REQUEST);
+        }
         return ResponseEntity.ok(user);
     }
 
     /**
      * Api for creation object {@link User}
-     * @param login login of user
-     * @param email email of user
-     * @param password password of user
-     * @param userLogo photo of User
-     * @return new user {@link User}
+     * @return {@link HttpStatus}
      */
-    @RequestMapping(value = "/createUser" ,method = RequestMethod.POST)
-    public ResponseEntity<Object> createUser(
-             @RequestParam("login") String login,
-             @RequestParam("email") String email,
-             @RequestParam("password") String password,
-             @RequestParam("file") MultipartFile userLogo
-
+    @RequestMapping(value = "/registration",method = RequestMethod.POST)
+    public ResponseEntity registration(
+         @RequestBody User user
     ){
-        if(userService.findUserByEmail(email)){
+        if(userService.findUserByEmail(user.getEmail())){
             LOG.debug("User Exist");
-           return new ResponseEntity<>("Such User Exist in the system",HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>("Such User Exist in the system",HttpStatus.NOT_ACCEPTABLE);
         }
-        try {
-            user = userService.createUser(login, email, password, userLogo);
-        }catch (IOException e){
-            return new ResponseEntity<>("Invalid File",HttpStatus.BAD_REQUEST);
-        }
-        return ResponseEntity.ok(user);
+        userService.createUser(user.getName(), user.getEmail(), user.getPassword());
+
+       return new ResponseEntity(HttpStatus.OK);
     }
 
 }

@@ -87,7 +87,7 @@ public class MainController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-        return "include/login";
+        return "/index";
     }
 
 

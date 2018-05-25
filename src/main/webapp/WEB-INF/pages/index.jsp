@@ -12,9 +12,23 @@
 </head>
 <body>
     <%@include file="include/header.jsp" %>
+    <div ng-controller="userCtrl">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+            </tr>
+            <tr ng-repeat = "user in users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        </table>
+    </div>
 
     <%@include file="include/footer.jsp"%>
-    <script src="<c:url value="/resources/js/login.js"/>"  type="text/javascript" ></script>
+
     <script src="<c:url value="/resources/js/main.js"/>"  type="text/javascript" ></script>
 </body>
 </html>

@@ -14,10 +14,12 @@ public interface UserService {
 
     List<User> findAll();
 
-    User findUserById(int id);
+    User findUserById(Long id);
 
-    User createUser(String login,String email,String password,MultipartFile userLogo)throws IOException;
+    User createUser(String login,String email,String password);
 
     boolean findUserByEmail(String email);
+
+    User updateAvatar(Long id,MultipartFile userLogo)throws IOException;
 
 }

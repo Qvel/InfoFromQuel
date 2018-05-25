@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService{
      * @param id user id
      * @return user with such id
      */
-    public User findUserById(int id){
+    public User findUserById(Long id){
         LOG.debug("UserServiceImpl.findUserById = {} "+id);
         return userDao.findUserById(id);
     }
@@ -58,12 +58,10 @@ public class UserServiceImpl implements UserService{
      * @param login login of user
      * @param email email of user
      * @param password password of user
-     * @param userLogo photo of User
-     * @throws IOException if had probmes with creation logo
      * @return new user
      */
     @Override
-    public User createUser(String login,String email,String password,MultipartFile userLogo)throws IOException{
+    public User createUser(String login,String email,String password){
         LOG.debug("UserServiceImpl.createUser = {} ");
         LOG.debug("Create user with params = {} " +
                 " login " + login +
@@ -77,25 +75,6 @@ public class UserServiceImpl implements UserService{
                 .setRoles(Collections.singleton(new Role(2L,"USER")))
                 .build();
 
-        LOG.debug("size = " + userLogo.getSize());
-        LOG.debug("name = " + userLogo.getOriginalFilename());
-        String directory = "Q:" + File.separator + "work"
-                + File.separator + "InfoFromQuel" + File.separator + "infoFromQuel" + File.separator
-                + "src" + File.separator + "main" + File.separator
-                + "webapp" + File.separator + "resources" + File.separator + "logos"
-                + File.separator + user.hashCode() + ".jpg";
-        File logo = new File(directory);
-        LOG.debug(logo.getAbsolutePath());
-        LOG.debug(logo.getPath());
-        LOG.debug(logo.getParentFile().mkdirs());
-        LOG.debug("name of new logo " + logo.getName());
-        try {
-            userLogo.transferTo(logo);
-            user.setLogo(logo.getName());
-        }catch (IOException ex){
-            LOG.error("ERROR while upload logo " + Arrays.toString(ex.getStackTrace()));
-            throw new IOException();
-        }
         user = userDao.createUser(user);
         //mailService.sendHtmlEmail(user,EmailTemplates.REGISTRATION_TEMPLATE,EmailTemplates.REGISTRATION_SUBJECT);
         return user;
@@ -111,4 +90,29 @@ public class UserServiceImpl implements UserService{
         return user != null;
     }
 
+    @Override
+    public User updateAvatar(Long id, MultipartFile userLogo) throws IOException{
+         User user  = userDao.findUserById(id);
+         LOG.debug("size = " + userLogo.getSize());
+         LOG.debug("name = " + userLogo.getOriginalFilename());
+         String directory = "Q:" + File.separator + "work"
+                + File.separator + "InfoFromQuel" + File.separator + "infoFromQuel" + File.separator
+                + "src" + File.separator + "main" + File.separator
+                + "webapp" + File.separator + "resources" + File.separator + "logos"
+                + File.separator + user.hashCode() + ".jpg";
+         File logo = new File(directory);
+         LOG.debug(logo.getAbsolutePath());
+         LOG.debug(logo.getPath());
+         LOG.debug(logo.getParentFile().mkdirs());
+         LOG.debug("name of new logo " + logo.getName());
+         try {
+            userLogo.transferTo(logo);
+            user.setLogo(logo.getName());
+         }catch (IOException ex){
+            LOG.error("ERROR while upload logo " + Arrays.toString(ex.getStackTrace()));
+            throw new IOException();
+         }
+         user = userDao.updateUser(user);
+         return user;
+    }
 }
