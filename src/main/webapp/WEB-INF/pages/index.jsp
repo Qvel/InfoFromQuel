@@ -28,7 +28,5 @@
     </div>
 
     <%@include file="include/footer.jsp"%>
-
-    <script src="<c:url value="/resources/js/main.js"/>"  type="text/javascript" ></script>
 </body>
 </html>

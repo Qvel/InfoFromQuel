@@ -2,6 +2,7 @@ package com.infofromquel.service.security;
 
 import com.infofromquel.dao.UserDao;
 import com.infofromquel.entity.User;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,7 +16,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class AuthenticationUsers implements UserDetailsService {
 
-    private final UserDao userDao;
+     private static final Logger LOG = Logger.getLogger(AuthenticationUsers.class);
+     private final UserDao userDao;
 
     @Autowired
     public AuthenticationUsers(UserDao userDao) {
@@ -30,6 +32,8 @@ public class AuthenticationUsers implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+
+        LOG.debug("AuthenticationUsers.loadUserByUsername = {}" + userName);
 
         User user = userDao.findUserByEmail(userName);
 

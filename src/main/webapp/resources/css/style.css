@@ -103,7 +103,9 @@ q > q:before {
 }
 
 /*reset css file  end */
-
+[hidden] {
+    display: none !important;
+}
 /* footer styles */
 #maetokFooter {
     background-color : #737373;

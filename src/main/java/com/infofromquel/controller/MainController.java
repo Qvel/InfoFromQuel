@@ -34,7 +34,6 @@ public class MainController {
         if(principal != null){
             LOG.debug("Welcome to page index " + principal.getName());
         }
-
         return "index";
     }
 
@@ -66,13 +65,6 @@ public class MainController {
         return "redirect:/?logout";
     }
 
-    /**
-     * @return registration page
-     */
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String mainPage() {
-        return "registration";
-    }
 
     /**
      * @return permissionError page
@@ -91,4 +83,8 @@ public class MainController {
     }
 
 
+    @RequestMapping(value = "/user",method = RequestMethod.GET)
+    public String userPage(){
+        return "user";
+    }
 }

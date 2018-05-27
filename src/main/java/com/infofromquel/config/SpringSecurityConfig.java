@@ -49,10 +49,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                    .formLogin().loginPage("/login").permitAll()
                    .usernameParameter("j_username")
                    .passwordParameter("j_password")
+                   .failureUrl("/")
                 .and()
                    .logout().logoutSuccessUrl("/?logout")
                 .and()
-                    .rememberMe().alwaysRemember(true)
+                    .rememberMe().key("uniqueAndSecret").userDetailsService(userDetailsService)
                     .tokenValiditySeconds(1209600)
                 .and()
                     .exceptionHandling().accessDeniedPage("/permissionError");
