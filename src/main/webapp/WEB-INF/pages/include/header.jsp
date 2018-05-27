@@ -42,7 +42,12 @@
                     </c:if>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()" >
-                    <li><a class="header-links">Привет , <security:authentication property="principal.username" /></a></li>
+                    <li ng-controller="userCtrl">
+                        <a class="header-links" user_email="<security:authentication property="principal.username"/>" id="user_email" >
+                            Привет , <security:authentication property="principal.username" />
+
+                        </a>
+                    </li>
                     <li><a class="header-links" href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-in"></span> Выйти </a></li>
                 </sec:authorize>
             </ul>

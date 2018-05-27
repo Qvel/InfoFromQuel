@@ -6,31 +6,27 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c5a5a99-47a1-42ac-86a4-17889a4cc0ca" name="Default" comment="header and footer design">
+    <list default="true" id="8c5a5a99-47a1-42ac-86a4-17889a4cc0ca" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/infofromquel/config/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/config/SpringSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/infofromquel/service/security/AuthenticationUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/service/security/AuthenticationUsers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/include/jsFrameworks.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/include/jsFrameworks.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/include/login.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/include/header.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/InfoQuel.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/InfoQuel.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/config/SpringSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/config/SpringSecurityConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/controller/MainController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/controller/UsersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/controller/UsersController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/dao/UserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/dao/UserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/dao/UserDaoImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/service/userservice/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/service/userservice/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/service/userservice/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/classes/com/infofromquel/service/userservice/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/pages/include/login.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/pages/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/pages/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/pages/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/InfoQuel/WEB-INF/pages/user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/config/SpringSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/infofromquel/config/SpringSecurityConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/controller/MainController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/controller/UsersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/infofromquel/controller/UsersController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/infofromquel/dao/UserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/dao/UserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/infofromquel/dao/UserDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/controller/UsersController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/service/userservice/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/infofromquel/service/userservice/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/infofromquel/service/userservice/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/infofromquel/service/userservice/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -61,29 +57,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="user.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="220" column="28" selection-start-line="220" selection-start-column="28" selection-end-line="220" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="107" column="1" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="header.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/include/header.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="82" column="38" lean-forward="true" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
+            <state relative-caret-position="327">
+              <caret line="45" column="134" selection-start-line="45" selection-start-column="134" selection-end-line="45" selection-end-column="134" />
             </state>
           </provider>
         </entry>
@@ -91,8 +69,26 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="46" />
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="768">
+              <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsersController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/UsersController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="129" column="51" selection-start-line="129" selection-start-column="51" selection-end-line="129" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -100,12 +96,8 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-              <folding>
-                <element signature="e#2797#2798#0" expanded="true" />
-                <element signature="e#2821#2822#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="174">
+              <caret line="31" column="24" lean-forward="true" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -113,55 +105,8 @@
       <file leaf-file-name="SpringSecurityConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/config/SpringSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="101" selection-start-line="11" selection-start-column="101" selection-end-line="11" selection-end-column="101" />
-              <folding>
-                <element signature="e#2862#2863#0" expanded="true" />
-                <element signature="e#2912#2913#0" expanded="true" />
-                <element signature="e#3660#3661#0" expanded="true" />
-                <element signature="e#3719#3720#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpringConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/config/SpringConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="28" column="79" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="79" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthenticationUsers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/security/AuthenticationUsers.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#715#716#0" expanded="true" />
-                <element signature="e#753#754#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/userservice/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/dao/UserDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            <state relative-caret-position="83">
+              <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -206,8 +151,10 @@
       <find>user</find>
       <find>configure</find>
       <find>Authentication</find>
-      <find>file</find>
       <find>mainPage</find>
+      <find>file</find>
+      <find>iamquel08@gmail.com</find>
+      <find>USER</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -261,18 +208,18 @@
         <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/LogInController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/dao/UserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/dao/UserDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/service/userservice/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/service/userservice/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/include/header.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/UsersController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/include/jsFrameworks.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/MainController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/service/security/AuthenticationUsers.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/config/SpringSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/service/userservice/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/service/security/AuthenticationUsers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/service/userservice/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/include/header.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/controller/UsersController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/infofromquel/config/SpringSecurityConfig.java" />
       </list>
     </option>
   </component>
@@ -935,7 +882,7 @@
       <workItem from="1527060249256" duration="19323000" />
       <workItem from="1527149994377" duration="14307000" />
       <workItem from="1527229048111" duration="20843000" />
-      <workItem from="1527405486734" duration="5404000" />
+      <workItem from="1527405486734" duration="21258000" />
     </task>
     <task id="LOCAL-00001" summary="Without DB">
       <created>1508939311298</created>
@@ -1182,11 +1129,25 @@
       <option name="project" value="LOCAL" />
       <updated>1527253491840</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="header and footer design">
+      <created>1527415402452</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1527415402452</updated>
+    </task>
+    <task id="LOCAL-00037" summary="circuit bean creation problem">
+      <created>1527422136910</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1527422136910</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="385505000" />
+    <option name="totallyTimeSpent" value="401359000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1212,7 +1173,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32934782" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.39542484" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.39542484" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="CheckStyle" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4978678" weight="0.32897604" />
@@ -1279,7 +1240,8 @@
     <MESSAGE value="angular connected" />
     <MESSAGE value="footer and password encoder" />
     <MESSAGE value="header and footer design" />
-    <option name="LAST_COMMIT_MESSAGE" value="header and footer design" />
+    <MESSAGE value="circuit bean creation problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="circuit bean creation problem" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1287,13 +1249,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/mail/MailServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar!/javax/servlet/http/HttpServletResponse.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1314,13 +1269,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/ng-boilerplate/build.config.js" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/ng-boilerplate/src/index.html" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/angular.min.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/config/PropertiesConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.6.RELEASE/spring-webmvc-5.0.6.RELEASE.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurationSupport.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -1428,16 +1376,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/LogInController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/dao/UserDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="87" column="16" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_ajax.googleapis.com_ajax_libs_angularjs_1.5.6_angular.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -1464,29 +1402,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2245#2246#0" expanded="true" />
-            <element signature="e#2285#2286#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/registration.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
           <caret line="39" column="41" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/UsersController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="664">
-          <caret line="86" column="23" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1495,13 +1414,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" selection-start-line="15" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
@@ -1534,88 +1446,131 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/userservice/UserServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/userservice/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="86" column="19" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
+        <state relative-caret-position="340">
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/userservice/UserService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        <state relative-caret-position="320">
+          <caret line="167" lean-forward="true" selection-start-line="167" selection-end-line="167" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.6.RELEASE/spring-context-5.0.6.RELEASE.jar!/org/springframework/context/annotation/Bean.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/config/PropertiesConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/security/AuthenticationUsers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="116">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#715#716#0" expanded="true" />
-            <element signature="e#753#754#0" expanded="true" />
+            <element signature="e#866#867#0" expanded="true" />
+            <element signature="e#912#913#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/service/userservice/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2245#2246#0" expanded="true" />
+            <element signature="e#2285#2286#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/config/SpringConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="28" column="79" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="79" />
+        <state relative-caret-position="102">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/style.css">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="107" column="1" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
+        <state relative-caret-position="451">
+          <caret line="142" column="126" lean-forward="true" selection-start-line="142" selection-start-column="126" selection-end-line="142" selection-end-column="126" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/config/SpringSecurityConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/dao/UserDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="101" selection-start-line="11" selection-start-column="101" selection-end-line="11" selection-end-column="101" />
+        <state relative-caret-position="364">
+          <caret line="61" column="24" lean-forward="true" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="24" />
           <folding>
-            <element signature="e#2862#2863#0" expanded="true" />
-            <element signature="e#2912#2913#0" expanded="true" />
-            <element signature="e#3660#3661#0" expanded="true" />
-            <element signature="e#3719#3720#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#2797#2798#0" expanded="true" />
-            <element signature="e#2821#2822#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="46" />
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/include/header.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="82" column="38" lean-forward="true" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
+        <state relative-caret-position="327">
+          <caret line="45" column="134" selection-start-line="45" selection-start-column="134" selection-end-line="45" selection-end-column="134" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="220" column="28" selection-start-line="220" selection-start-column="28" selection-end-line="220" selection-end-column="28" />
+        <state relative-caret-position="174">
+          <caret line="31" column="24" lean-forward="true" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/controller/UsersController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="129" column="51" selection-start-line="129" selection-start-column="51" selection-end-line="129" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/infofromquel/config/SpringSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="768">
+          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
         </state>
       </provider>
     </entry>

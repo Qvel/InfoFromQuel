@@ -13,7 +13,8 @@ app.factory("config",function(){
     var ajax_url = "http://localhost:8080/InfoQuel/";
    return {
        get_users_url : ajax_url + "getUsers",
-       registration_url : ajax_url + "registration"
+       registration_url : ajax_url + "registration",
+       get_user_by_email : ajax_url + "getUserByEmail"
    }
 });
 
@@ -43,11 +44,28 @@ app.controller("registrationCtrl",function ($scope,$http,config) {
             }
         }).then(function success(response){
             console.log(response);
-        },function error(response){
-            console.log(response);
         });
     };
 
 });
 
+app.controller("userCtrl",function ($scope,$http,config) {
+
+    var email = $("#user_email").attr("user_email");
+    console.log(email);
+    var data = "email=" + email;
+    $http({
+        url: config.get_user_by_email,
+        method: "POST",
+        data:data,
+        headers:{
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+    }).then(function success(response){
+        console.log(response.data);
+        $("#user_email").attr("href","/InfoQuel/user/"+response.data);
+    });
+
+
+});
 

@@ -30,7 +30,6 @@ public class MainController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String mainPage(Principal principal) {
         LOG.debug("Hi");
-
         if(principal != null){
             LOG.debug("Welcome to page index " + principal.getName());
         }
@@ -58,7 +57,6 @@ public class MainController {
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
-
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         LOG.debug("Successfully logout ");

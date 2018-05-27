@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -52,11 +53,25 @@ public class UsersController {
      */
     @RequestMapping(value = "/getUser", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<User> getUser(
-            @RequestParam("id") Long id
+    public ResponseEntity<User> getUserById(
+            @RequestBody Long id
     ) {
         user = userService.findUserById(id);
         return ResponseEntity.ok(user);
+    }
+
+    /**
+     * @param email email of user
+     * @return user with such email
+     */
+    @RequestMapping(value = "/getUserByEmail", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<Long> getUserByEmail(
+            @RequestParam String email
+    ) {
+        user = userService.getUserByEmail(email);
+        LOG.debug("User = {} " + user);
+        return ResponseEntity.ok(user.getId());
     }
 
     /**
@@ -101,10 +116,18 @@ public class UsersController {
      * @return {@link ModelAndView} with {@link User} and view
      */
     @RequestMapping(value = "/user/{userId}",method = RequestMethod.GET)
-    public ModelAndView userPage(@PathVariable Long userId){
+    public ModelAndView userPage(@PathVariable Long userId,Principal principal){
+        LOG.debug("UsersController.userPage = {} " + userId);
         user = userService.findUserById(userId);
-        ModelAndView userView = new ModelAndView("user");
-        userView.addObject("User",user);
-        return userView;
+        if(principal != null) {
+            if (principal.getName().equals(user.getEmail())) {
+                ModelAndView userView = new ModelAndView("user");
+                userView.addObject("User", user);
+                return userView;
+            }
+        }
+
+        return new ModelAndView("permissionError");
     }
+
 }
