@@ -133,6 +133,7 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", roles=" + roles +
                 ", isExist=" + isExist +
+                ", userLogo = " + logo +
                 '}';
     }
 

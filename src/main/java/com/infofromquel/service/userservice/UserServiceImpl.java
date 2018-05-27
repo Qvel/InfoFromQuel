@@ -7,13 +7,17 @@ import com.infofromquel.entity.User;
 import com.infofromquel.service.mail.MailService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.io.Resource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.core.io.UrlResource;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -128,4 +132,29 @@ public class UserServiceImpl implements UserService{
          return user;
     }
 
+    @Override
+    public Resource loadAsResource(String fileName) throws MalformedURLException{
+        LOG.debug("UserService.loadAsResource = {} " + fileName);
+        try {
+            LOG.debug("1");
+            String path = "Q:" + File.separator + "work"
+                    + File.separator + "InfoFromQuel" + File.separator + "infoFromQuel" + File.separator
+                    + "src" + File.separator + "main" + File.separator
+                    + "webapp" + File.separator + "resources" + File.separator + "logos"
+                    + File.separator + fileName;
+            Path file = Paths.get(path);
+            Resource resource = new UrlResource(file.toUri());
+            LOG.debug("2");
+            if (resource.exists() || resource.isReadable()) {
+                return resource;
+            }
+            else {
+                throw new MalformedURLException();
+            }
+        }
+        catch (MalformedURLException e) {
+            throw new MalformedURLException();
+        }
+
+    }
 }

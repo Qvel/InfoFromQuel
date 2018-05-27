@@ -6,6 +6,8 @@ import com.infofromquel.entity.User;
 import com.infofromquel.service.userservice.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,8 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -81,11 +86,12 @@ public class UsersController {
      * @return new user {@link User}
      */
     @RequestMapping(value = "/updateAvatar" ,method = RequestMethod.POST)
-    public ResponseEntity<Object> createUser(
+    public ResponseEntity<Object> updateUserAvatar(
              @RequestParam("id") Long id,
              @RequestParam("file") MultipartFile userLogo
 
     ){
+        LOG.debug("UsersCotroller.updateUserAvatar = {} " + id);
         try {
             user = userService.updateAvatar(id, userLogo);
         }catch (IOException e){
@@ -128,6 +134,19 @@ public class UsersController {
         }
 
         return new ModelAndView("permissionError");
+    }
+
+    @RequestMapping(value = "/user/getLogo",method = RequestMethod.GET)
+    public ResponseEntity getUserIcon(@RequestParam("fileName") String fileName){
+        try {
+            Resource file = userService.loadAsResource(fileName);
+            LOG.debug("Resource = " + file);
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                    "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+        }catch (MalformedURLException e){
+            //LOG.error("MalformedURLException " + Arrays.toString(e.getStackTrace()));
+        }
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
 }

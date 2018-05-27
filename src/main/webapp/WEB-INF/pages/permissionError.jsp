@@ -229,9 +229,9 @@
 <body>
 <div class="errorPageRap">
     <div class="holoContainer">
-        <img src="http://danielwolf.cc/codepen/errorpage/userNotFoundBanner.png">
-        <img src="http://danielwolf.cc/codepen/errorpage/userNotFoundBanner_green.png">
-        <img src="http://danielwolf.cc/codepen/errorpage/userNotFoundBanner_red.png">
+        <img src="<c:url value="/resources/images/userNotFoundBanner.png" />" >
+        <img src="<c:url value="/resources/images/userNotFoundBanner_green.png" />" >
+        <img src="<c:url value="/resources/images/userNotFoundBanner_red.png" />" >
         <svg class="holoPad" width="25.6rem" height="27.8rem" viewBox="0 0 226 242" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs>
                 <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-1">
@@ -449,25 +449,5 @@
         Можете спокойно вернуться на <a href="/InfoQuel">главную страницу</a>
     </h1>
 </div>
-<script>
-    // scale on resize
-    function fontResize() {
-        var resolution = 1440;
-        var font = 10;
-
-        var width = $(window).width();
-
-        var newFont = font * (width / resolution);
-        $("html").css("font-size", newFont);
-    }
-
-    $(document).ready(function() {
-        fontResize();
-        $(window).bind("resize", function() {
-            fontResize();
-        });
-    });
-
-</script>
 </body>
 </html>

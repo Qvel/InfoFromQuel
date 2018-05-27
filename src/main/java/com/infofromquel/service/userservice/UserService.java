@@ -1,9 +1,11 @@
 package com.infofromquel.service.userservice;
 
 import com.infofromquel.entity.User;
+import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.List;
 
 /**
@@ -24,4 +26,5 @@ public interface UserService {
 
     User getUserByEmail(String email);
 
+    Resource loadAsResource(String fileName)throws MalformedURLException;
 }

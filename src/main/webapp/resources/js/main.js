@@ -14,7 +14,8 @@ app.factory("config",function(){
    return {
        get_users_url : ajax_url + "getUsers",
        registration_url : ajax_url + "registration",
-       get_user_by_email : ajax_url + "getUserByEmail"
+       get_user_by_email : ajax_url + "getUserByEmail",
+       avatar_upload : ajax_url + "updateAvatar"
    }
 });
 
@@ -64,8 +65,63 @@ app.controller("userCtrl",function ($scope,$http,config) {
     }).then(function success(response){
         console.log(response.data);
         $("#user_email").attr("href","/InfoQuel/user/"+response.data);
+        $("#user_email").attr("user_id",response.data);
     });
-
 
 });
 
+app.controller("avatarCtrl",function ($scope,$http,config,$rootScope) {
+    console.log("controller");
+
+    $scope.updateAvatarFront = function () {
+        console.log("work");
+        $rootScope.form = event.target.files[0];
+        console.log($rootScope.form.name);
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $("#user_logo")
+                .attr('src', e.target.result)
+        };
+
+        reader.readAsDataURL($rootScope.form);
+        $("#save_user_avatar").css("display","inline");
+        /*var data = new FormData();
+        data.append('id',$("#user_email").attr("user_id"));
+        data.append('file',form);
+        $http({
+            url: config.avatar_upload,
+            method: "POST",
+            data:data,
+            headers:{
+                'Content-Type': undefined
+            },
+            transformRequest: angular.identity
+        })*/
+    };
+    $scope.updateAvatarBack = function (){
+        var data = new FormData();
+        console.log($rootScope.form.name)
+        data.append('id',$("#user_email").attr("user_id"));
+        data.append('file',$rootScope.form);
+        $http({
+           url: config.avatar_upload,
+           method: "POST",
+           data:data,
+           headers:{
+               'Content-Type': undefined
+           },
+           transformRequest: angular.identity
+       })
+    }
+});
+
+app.directive('customOnChange', function() {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var onChangeFunc = scope.$eval(attrs.customOnChange);
+            element.bind('change', onChangeFunc);
+        }
+    };
+});
