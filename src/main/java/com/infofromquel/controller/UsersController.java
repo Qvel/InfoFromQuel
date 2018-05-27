@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.List;
@@ -95,4 +96,15 @@ public class UsersController {
        return new ResponseEntity(HttpStatus.OK);
     }
 
+    /**
+     * @param userId user id
+     * @return {@link ModelAndView} with {@link User} and view
+     */
+    @RequestMapping(value = "/user/{userId}",method = RequestMethod.GET)
+    public ModelAndView userPage(@PathVariable Long userId){
+        user = userService.findUserById(userId);
+        ModelAndView userView = new ModelAndView("user");
+        userView.addObject("User",user);
+        return userView;
+    }
 }

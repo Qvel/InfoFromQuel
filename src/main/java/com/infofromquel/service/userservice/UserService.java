@@ -22,4 +22,6 @@ public interface UserService {
 
     User updateAvatar(Long id,MultipartFile userLogo)throws IOException;
 
+    User getUserByEmail(String email);
+
 }

@@ -7,6 +7,7 @@ import com.infofromquel.entity.User;
 import com.infofromquel.service.mail.MailService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,7 +28,7 @@ public class UserServiceImpl implements UserService{
     private static final Logger LOG = Logger.getLogger(UserServiceImpl.class);
 
     @Autowired
-    public UserServiceImpl(UserDao userDao,MailService mailService,PasswordEncoder passwordEncoder){
+    public UserServiceImpl(UserDao userDao, MailService mailService, PasswordEncoder passwordEncoder){
         this.userDao = userDao;
         this.mailService = mailService;
         this.passwordEncoder = passwordEncoder;
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService{
 
     private UserDao userDao;
     private MailService mailService;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     /**
      * @return all user
@@ -82,12 +83,23 @@ public class UserServiceImpl implements UserService{
 
     /**
      * @param email user email
-     * @return user with such email
+     * @return status of user, if true user exist , else doesn't exist
      */
     public boolean findUserByEmail(String email){
         LOG.debug("UserServiceImpl.findUserByEmail = {} " + email);
         User user = userDao.findUserByEmail(email);
         return user != null;
+    }
+
+    /**
+     *
+     * @param email user email
+     * @return user {@link User} with such email
+     */
+    @Override
+    public User getUserByEmail(String email) {
+        LOG.debug("UserServiceImpl.getUserByEmail = {} " + email);
+        return userDao.findUserByEmail(email);
     }
 
     @Override
@@ -115,4 +127,5 @@ public class UserServiceImpl implements UserService{
          user = userDao.updateUser(user);
          return user;
     }
+
 }

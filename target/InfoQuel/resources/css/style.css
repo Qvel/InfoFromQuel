@@ -103,7 +103,9 @@ q > q:before {
 }
 
 /*reset css file  end */
-
+[hidden] {
+    display: none !important;
+}
 /* footer styles */
 #maetokFooter {
     background-color : #737373;
@@ -161,3 +163,11 @@ q > q:before {
 }
 
 /* footer styles */
+
+
+
+/* User profile */
+#edit_user_form{
+    margin-top:15px;
+}
+/* User profile */

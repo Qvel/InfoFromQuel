@@ -1,7 +1,7 @@
 package com.infofromquel.service.security;
 
-import com.infofromquel.dao.UserDao;
 import com.infofromquel.entity.User;
+import com.infofromquel.service.userservice.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,15 +17,14 @@ import org.springframework.stereotype.Component;
 public class AuthenticationUsers implements UserDetailsService {
 
      private static final Logger LOG = Logger.getLogger(AuthenticationUsers.class);
-     private final UserDao userDao;
+     private final UserService userService;
 
     @Autowired
-    public AuthenticationUsers(UserDao userDao) {
-        this.userDao = userDao;
+    public AuthenticationUsers(UserService userService) {
+        this.userService = userService;
     }
 
     /**
-     *
      * @param userName name of user
      * @return {@link UserDetails}
      * @throws UsernameNotFoundException if user couldn't be found
@@ -35,7 +34,7 @@ public class AuthenticationUsers implements UserDetailsService {
 
         LOG.debug("AuthenticationUsers.loadUserByUsername = {}" + userName);
 
-        User user = userDao.findUserByEmail(userName);
+        User user = userService.getUserByEmail(userName);
 
         return new CustomUserDetails(user);
     }

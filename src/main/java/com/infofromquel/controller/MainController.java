@@ -82,9 +82,4 @@ public class MainController {
         return "/index";
     }
 
-
-    @RequestMapping(value = "/user",method = RequestMethod.GET)
-    public String userPage(){
-        return "user";
-    }
 }
