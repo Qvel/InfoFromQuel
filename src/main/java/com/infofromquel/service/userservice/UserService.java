@@ -27,4 +27,6 @@ public interface UserService {
     User getUserByEmail(String email);
 
     Resource loadAsResource(String fileName)throws MalformedURLException;
+
+    User updateUser(User user);
 }

@@ -106,6 +106,13 @@ public class UserServiceImpl implements UserService{
         return userDao.findUserByEmail(email);
     }
 
+    /**
+     * create user avatar and update user field logo
+     * @param id id of user
+     * @param userLogo avatar of user
+     * @return {@link User}
+     * @throws IOException if file are'nt created
+     */
     @Override
     public User updateAvatar(Long id, MultipartFile userLogo) throws IOException{
          User user  = userDao.findUserById(id);
@@ -132,6 +139,12 @@ public class UserServiceImpl implements UserService{
          return user;
     }
 
+    /**
+     * Return file in run-time without reboot
+     * @param fileName name of file that needs to upload
+     * @return {@link Resource}
+     * @throws MalformedURLException if there is no file
+     */
     @Override
     public Resource loadAsResource(String fileName) throws MalformedURLException{
         LOG.debug("UserService.loadAsResource = {} " + fileName);
@@ -156,5 +169,19 @@ public class UserServiceImpl implements UserService{
             throw new MalformedURLException();
         }
 
+    }
+
+    /**
+     * Update user fields
+     * @param user {@link User}
+     * @return {@link User}
+     */
+    @Override
+    public User updateUser(User user) {
+        LOG.debug("UserService.updateUser = {} " + user);
+        if(user.getPassword() != null){
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
+        return userDao.updateUser(user);
     }
 }

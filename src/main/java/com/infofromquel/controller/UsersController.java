@@ -19,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.security.Principal;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -147,6 +146,14 @@ public class UsersController {
             //LOG.error("MalformedURLException " + Arrays.toString(e.getStackTrace()));
         }
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
+
+
+    @RequestMapping(value = "/user/updateUser" , method = RequestMethod.POST)
+    public ResponseEntity<User> updateUser(@RequestBody User user){
+        LOG.debug("UsersController.updateUser = {}" + user);
+        userService.updateUser(user);
+        return ResponseEntity.ok(user);
     }
 
 }

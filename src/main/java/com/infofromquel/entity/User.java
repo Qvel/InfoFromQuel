@@ -1,5 +1,6 @@
 package com.infofromquel.entity;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.*;
 @Component
 @Entity
 @Table(name = "users")
+@DynamicUpdate
 public class User implements Serializable {
 
     public User() {

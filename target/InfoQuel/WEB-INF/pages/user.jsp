@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<html ng-app="indexPage">
 <head>
     <title>Личный кабинет</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -32,7 +32,8 @@
                             <div class="col-md-6">
                                 <h6>About</h6>
                                 <p>
-                                    Web Designer, UI/UX Engineer
+                                    ${User.name}
+                                    ${User.email}
                                 </p>
                                 <h6>Hobbies</h6>
                                 <p>
@@ -124,23 +125,23 @@
                         </table>
                     </div>
                     <div class="tab-pane" id="edit">
-                        <form role="form" id="edit_user_form">
+                        <form role="form" id="edit_user_form" ng-controller="updateUserCtrl">
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="user_name" >Имя </label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="text" id="user_name" placeholder="Новое имя" value=${User.name}>
+                                    <input class="form-control" type="text" id="user_name" placeholder="Новое имя" ng-model="user_name">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="user_email">Почта </label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="email" id="user_email" placeholder="Новая почта" value=${User.email}>
+                                    <input class="form-control" type="email" id="user_email" placeholder="Новая почта"  ng-model="user_email">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-3 col-form-label form-control-label" for="user_password" >Пароль</label>
                                 <div class="col-lg-9">
-                                    <input class="form-control" type="password" id="user_password" placeholder="Новый пароль">
+                                    <input class="form-control" type="password" id="user_password" placeholder="Новый пароль" ng-model="user_password">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -153,19 +154,20 @@
                                 <label class="col-lg-3 col-form-label form-control-label"></label>
                                 <div class="col-lg-9">
                                     <input type="reset" class="btn btn-secondary" value="Отменить">
-                                    <input type="button" class="btn btn-primary" value="Сохранить изменения">
+                                    <input type="button" class="btn btn-primary" value="Сохранить изменения" ng-click="updateUser(user_email,user_name,user_password)">
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 order-lg-1 text-center">
-                <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+            <div class="col-lg-4 order-lg-1 text-center" ng-controller="avatarCtrl">
+                <img id="user_logo" src="http://localhost:8080/InfoQuel/user/getLogo?fileName=${User.logo}" class="mx-auto img-fluid img-circle d-block" alt="avatar" width="150px" height="150px">
                 <h6 class="mt-2">Ваш Аватар</h6>
                 <label class="btn btn-default">
-                    Изменить <input type="file" id="file" class="custom-file-input" hidden>
+                    Изменить <input type="file" id="file" class="custom-file-input" custom-on-change="updateAvatarFront" hidden>
                 </label>
+                <button id="save_user_avatar" class="btn btn-success" ng-click="updateAvatarBack()">Сохранить</button>
             </div>
         </div>
     </div>

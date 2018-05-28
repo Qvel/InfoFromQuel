@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -101,7 +102,20 @@ public class UserDaoImpl implements UserDao{
     public User updateUser(User user) {
         LOG.debug("UserDaoImpl.updateUser " + user);
         Session session = sessionFactory.getCurrentSession();
-        session.update(user);
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaUpdate<User> criteriaQuery = criteriaBuilder.createCriteriaUpdate(User.class);
+        Root<User> root = criteriaQuery.from(User.class);
+        if(user.getName() != null){
+            criteriaQuery.set(root.get("name"),user.getName());
+        }
+        if(user.getEmail() != null){
+            criteriaQuery.set(root.get("email"),user.getEmail());
+        }
+        if(user.getPassword() != null){
+            criteriaQuery.set(root.get("password"),user.getPassword());
+        }
+        criteriaQuery.where(criteriaBuilder.equal(root.get("id"),user.getId()));
+        session.createQuery(criteriaQuery).executeUpdate();
         LOG.debug("User = {}" + user);
         return user;
     }

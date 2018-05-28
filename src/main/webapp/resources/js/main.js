@@ -15,7 +15,8 @@ app.factory("config",function(){
        get_users_url : ajax_url + "getUsers",
        registration_url : ajax_url + "registration",
        get_user_by_email : ajax_url + "getUserByEmail",
-       avatar_upload : ajax_url + "updateAvatar"
+       avatar_upload : ajax_url + "updateAvatar",
+       user_update : ajax_url + "user/updateUser"
    }
 });
 
@@ -86,18 +87,6 @@ app.controller("avatarCtrl",function ($scope,$http,config,$rootScope) {
 
         reader.readAsDataURL($rootScope.form);
         $("#save_user_avatar").css("display","inline");
-        /*var data = new FormData();
-        data.append('id',$("#user_email").attr("user_id"));
-        data.append('file',form);
-        $http({
-            url: config.avatar_upload,
-            method: "POST",
-            data:data,
-            headers:{
-                'Content-Type': undefined
-            },
-            transformRequest: angular.identity
-        })*/
     };
     $scope.updateAvatarBack = function (){
         var data = new FormData();
@@ -124,4 +113,26 @@ app.directive('customOnChange', function() {
             element.bind('change', onChangeFunc);
         }
     };
+});
+
+app.controller("updateUserCtrl",function ($scope,$http,config) {
+    $scope.updateUser = function (email,name,password) {
+        console.log(email,name,password);
+        var data = {
+            'id': $("#user_email").attr("user_id"),
+            'name': name,
+            'password': password,
+            'email' : email
+        };
+        $http({
+            url: config.user_update,
+            method: "POST",
+            data:data,
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(function success(response){
+            console.log(response);
+        });
+    }
 });

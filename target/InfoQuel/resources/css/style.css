@@ -170,4 +170,7 @@ q > q:before {
 #edit_user_form{
     margin-top:15px;
 }
+#save_user_avatar{
+    display: none;
+}
 /* User profile */
