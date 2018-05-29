@@ -55,13 +55,18 @@ public class UsersController {
      * @param id id of user
      * @return user with such id
      */
-    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/getUser", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<User> getUserById(
-            @RequestBody Long id
+    public ResponseEntity getUserById(
+            @RequestBody Long id , Principal principal
     ) {
-        user = userService.findUserById(id);
-        return ResponseEntity.ok(user);
+        if(principal != null){
+            user = userService.findUserById(id);
+            if(principal.getName().equals(user.getEmail())){
+                return ResponseEntity.ok(user);
+            }
+        }
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     /**
@@ -70,12 +75,17 @@ public class UsersController {
      */
     @RequestMapping(value = "/getUserByEmail", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Long> getUserByEmail(
-            @RequestParam String email
+    public ResponseEntity getUserByEmail(
+            @RequestParam String email,Principal principal
     ) {
-        user = userService.getUserByEmail(email);
-        LOG.debug("User = {} " + user);
-        return ResponseEntity.ok(user.getId());
+        if(principal != null){
+            user = userService.getUserByEmail(email);
+            if(principal.getName().equals(user.getEmail())){
+                LOG.debug("User = {} " + user);
+                return ResponseEntity.ok(user.getId());
+            }
+        }
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     /**
