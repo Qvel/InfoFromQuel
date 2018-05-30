@@ -1,5 +1,6 @@
 package com.infofromquel.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.stereotype.Component;
 
@@ -44,6 +45,7 @@ public class User implements Serializable {
     private Long id;
     @Column(name = "login",nullable = false)
     private String name;
+    @JsonIgnore
     @Column(name = "password",nullable = false)
     private String password;
     @Column(name = "email",nullable = false)
@@ -65,11 +67,16 @@ public class User implements Serializable {
             }
 
     )
+    @JsonIgnore
     private Set<Role> roles = new HashSet<>();
     @Column(name = "is_exist",nullable = false)
+    @JsonIgnore
     private boolean isExist;
     @Column(name = "logo")
     private String logo;
+    @JsonIgnore
+    @OneToMany(cascade = {CascadeType.ALL},mappedBy = "user",fetch = FetchType.EAGER)
+    private Set<Topic> topics = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -127,6 +134,14 @@ public class User implements Serializable {
         this.logo = logo;
     }
 
+    public Set<Topic> getTopics() {
+        return topics;
+    }
+
+    public void setTopics(Set<Topic> topics) {
+        this.topics = topics;
+    }
+
     @Override
     public String toString() {
         return "User{" + "id=" + id +
@@ -142,21 +157,22 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof User)) return false;
         User user = (User) o;
-        return id.equals(user.id) &&
-                isExist == user.isExist &&
-                Objects.equals(name, user.name) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(roles, user.roles);
+        return isExist() == user.isExist() &&
+                Objects.equals(getId(), user.getId()) &&
+                Objects.equals(getName(), user.getName()) &&
+                Objects.equals(getPassword(), user.getPassword()) &&
+                Objects.equals(getEmail(), user.getEmail()) &&
+                Objects.equals(getRoles(), user.getRoles()) &&
+                Objects.equals(getLogo(), user.getLogo());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, password, email, roles, isExist);
-    }
 
+        return Objects.hash(getId(), getName(), getPassword(), getEmail(), getRoles(), isExist(), getLogo());
+    }
 
     public static class Builder{
 
@@ -169,6 +185,7 @@ public class User implements Serializable {
         private Set<Role> roles = new HashSet<>();
         private boolean isExist;
         private String logo;
+        private Set<Topic> topics = new HashSet<>();
 
 
         public Builder setName(String name) {
@@ -198,6 +215,11 @@ public class User implements Serializable {
 
         public Builder setLogo(String logo) {
             this.logo = logo;
+            return this;
+        }
+
+        public Builder setTopics(Set<Topic> topics){
+            this.topics = topics;
             return this;
         }
 

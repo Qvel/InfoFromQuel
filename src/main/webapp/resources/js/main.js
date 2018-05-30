@@ -16,7 +16,9 @@ app.factory("config",function(){
        registration_url : ajax_url + "registration",
        get_user_by_email : ajax_url + "getUserByEmail",
        avatar_upload : ajax_url + "updateAvatar",
-       user_update : ajax_url + "user/updateUser"
+       user_update : ajax_url + "user/updateUser",
+       topic_create: ajax_url + "user/createTopic",
+       topic_get_all : ajax_url + "getAllTopics"
    }
 });
 
@@ -135,4 +137,37 @@ app.controller("updateUserCtrl",function ($scope,$http,config) {
             console.log(response);
         });
     }
+});
+
+app.controller("createPostCtrl",function ($scope,$http,config) {
+
+   $scope.createPost = function (title,body) {
+       console.log(title,body);
+       var user = {
+         'id' :  $("#user_email").attr("user_id")
+       };
+       var data = {
+           'user' : user,
+           'title' : title,
+           'body' : body
+       };
+
+       $http({
+          url: config.topic_create,
+           method : "POST",
+           data:data,
+           headers :{
+               'Content-Type': 'application/json'
+           }
+       }).then(function success(response) {
+           console.log(response.data)
+       });
+   }
+});
+
+app.controller("findAllPostCtrl",function ($scope,$http,config) {
+    $http.get(config.topic_get_all).then(function (response) {
+        $scope.topics = response.data;
+        console.log(response.data);
+    });
 });

@@ -16,13 +16,16 @@
             <div class="col-lg-8 order-lg-2">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                        <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Профайл</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
+                        <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Обновления</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                        <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Изменить профайл</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" data-target="#newTopic" data-toggle="tab" class="nav-link">Новый пост</a>
                     </li>
                 </ul>
                 <div class="tab-content py-4">
@@ -159,10 +162,32 @@
                             </div>
                         </form>
                     </div>
+                    <div class="tab-pane" id="newTopic">
+                        <form role="form" id="create_new_topic" ng-controller="createPostCtrl">
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label" for="topic_title" >Тема </label>
+                                <div class="col-lg-9">
+                                    <input class="form-control" type="text" id="topic_title" placeholder="Тема" ng-model="topic_title">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label" for="topic_body" >Содержимое </label>
+                                <div class="col-lg-9">
+                                    <textarea class="form-control" rows="5" id="topic_body" ng-model="topic_body"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label"></label>
+                                <div class="col-lg-9">
+                                     <input type="button" class="btn btn-primary" value="Запостить" ng-click="createPost(topic_title,topic_body)" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4 order-lg-1 text-center" ng-controller="avatarCtrl">
-                <img id="user_logo" src="http://localhost:8080/InfoQuel/user/getLogo?fileName=${User.logo}" class="mx-auto img-fluid img-circle d-block" alt="avatar" width="150px" height="150px">
+                <img id="user_logo" src="http://localhost:8080/InfoQuel/getLogo?fileName=${User.logo}" class="mx-auto img-fluid img-circle d-block" alt="avatar" width="150px" height="150px">
                 <h6 class="mt-2">Ваш Аватар</h6>
                 <label class="btn btn-default">
                     Изменить <input type="file" id="file" class="custom-file-input" custom-on-change="updateAvatarFront" hidden>

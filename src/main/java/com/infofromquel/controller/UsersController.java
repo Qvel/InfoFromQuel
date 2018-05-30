@@ -145,7 +145,7 @@ public class UsersController {
         return new ModelAndView("permissionError");
     }
 
-    @RequestMapping(value = "/user/getLogo",method = RequestMethod.GET)
+    @RequestMapping(value = "/getLogo",method = RequestMethod.GET)
     public ResponseEntity getUserIcon(@RequestParam("fileName") String fileName){
         try {
             Resource file = userService.loadAsResource(fileName);

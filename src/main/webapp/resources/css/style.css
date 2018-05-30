@@ -189,4 +189,10 @@ body {
 #save_user_avatar{
     display: none;
 }
+#create_new_topic{
+    margin-top:15px;
+}
+#topic_body{
+    resize: none;
+}
 /* User profile */
