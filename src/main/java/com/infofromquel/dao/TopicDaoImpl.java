@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import sun.rmi.runtime.Log;
 
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -129,5 +130,23 @@ public class TopicDaoImpl implements TopicDao{
             return null;
         }
         return topics;
+    }
+
+    /**
+     * find {@link Topic} by id
+     * @param id topic id
+     * @return {@link Topic}
+     */
+    @Override
+    public Topic findTopicById(Long id) {
+        LOG.debug("TopicDaoImpl.findTopicById = {} " + id);
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Topic> criteriaQuery = criteriaBuilder.createQuery(Topic.class);
+        Root<Topic> root = criteriaQuery.from(Topic.class);
+        criteriaQuery.where(criteriaBuilder.equal(root.get("id"),id));
+        Topic topic = session.createQuery(criteriaQuery).getSingleResult();
+        LOG.debug("result = {} " + topic);
+        return topic;
     }
 }

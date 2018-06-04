@@ -90,4 +90,13 @@ public class TopicController {
         searchPage.addObject("title",title);
         return searchPage;
     }
+
+    @RequestMapping(value ="/topic/{id}",method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView topicPage(@PathVariable Long id){
+        LOG.debug("TopicController.topicPage = {} " + id);
+        ModelAndView topicPage = new ModelAndView("topic");
+        topicPage.addObject("Topic",topicService.findTopicById(id));
+        return topicPage;
+    }
 }

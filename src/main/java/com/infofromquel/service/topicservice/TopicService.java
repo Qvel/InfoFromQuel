@@ -18,4 +18,6 @@ public interface TopicService {
     List<Topic> findTopicsByTitle(String title);
 
     List<Topic> findTopicsByBody(String body);
+
+    Topic findTopicById(Long id);
 }

@@ -12,6 +12,8 @@ public interface TopicDao {
 
     List<Topic> findAllTopics();
 
+    Topic findTopicById(Long id);
+
     Topic createTopic(Topic topic);
 
     Topic updateTopic(Topic topic);
@@ -19,5 +21,6 @@ public interface TopicDao {
     List<Topic> findTopicsByTitle(String title);
 
     List<Topic> findTopicsByBody(String body);
+
 
 }

@@ -77,4 +77,15 @@ public class TopicServiceImpl implements TopicService{
         LOG.debug("TopicServiceImpl.findTopicsByBody = {} " + body);
         return topicDao.findTopicsByBody(body);
     }
+
+    /**
+     * find topic with id
+     * @param id topic id
+     * @return {@link Topic}
+     */
+    @Override
+    public Topic findTopicById(Long id) {
+        LOG.debug("TopicServiceImpl.findTopicById = {}" + id);
+        return topicDao.findTopicById(id);
+    }
 }
