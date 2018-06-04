@@ -13,7 +13,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -116,7 +115,7 @@ public class TopicDaoImpl implements TopicDao{
      */
     @Override
     public List<Topic> findTopicsByBody(String body) {
-        LOG.debug("TopicDaoImpl.findTopicsByBody = {} " + body );
+        LOG.debug("TopicDaoImpl.findTopicsByBody = {} " + body);
         Session session = sessionFactory.getCurrentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<Topic> criteriaQuery = criteriaBuilder.createQuery(Topic.class);

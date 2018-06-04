@@ -28,9 +28,9 @@
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left">
+            <form class="navbar-form navbar-left" ng-controller="searchCtrl" ng-submit="redirectToSearchPage()">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Поиск">
+                    <input type="text" class="form-control" placeholder="Поиск" ng-model="title" >
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">

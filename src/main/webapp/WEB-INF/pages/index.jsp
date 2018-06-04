@@ -13,7 +13,6 @@
 <body>
     <%@include file="include/header.jsp" %>
     <div class="container" ng-controller="findAllPostCtrl">
-        <div data-ng-init="getAllPosts()">
         <div class="well"  ng-repeat="topic in topics">
             <div class="media">
                 <a class="pull-left" href="#">
@@ -46,7 +45,6 @@
                     </ul>
                 </div>
             </div>
-        </div>
         </div>
     </div>
     <%@include file="include/footer.jsp"%>

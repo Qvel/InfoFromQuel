@@ -18,7 +18,8 @@ app.factory("config",function(){
        user_update : ajax_url + "user/updateUser",
        topic_create: ajax_url + "user/createTopic",
        topic_get_all : ajax_url + "getAllTopics",
-       topics_search : ajax_url + "findTopicByTitle"
+       topics_search : ajax_url + "findTopicByTitle",
+       redirect_to_search : ajax_url + "search_"
    }
 });
 
@@ -166,28 +167,33 @@ app.controller("createPostCtrl",function ($scope,$http,config) {
 });
 
 app.controller("findAllPostCtrl",function ($scope,$http,config) {
-    $scope.getAllPosts = function(){
-        alert("1");
         $http.get(config.topic_get_all).then(function (response) {
             $scope.topics = response.data;
             console.log(response.data);
         });
-    }
 });
 
 app.controller("postSearchCtrl",function ($scope,$http,config) {
-    $scope.getPostsByText = function (text) {
-        var data = "title=" + text;
+
+        var title = $("#searchPosts").attr("search_title");
+        console.log(title);
+        var data = "title=" + title;
         $http({
             url: config.topics_search,
-            method: "GET",
+            method: "POST",
             data:data,
             headers:{
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
             }
         }).then(function success(response) {
             console.log(response.data);
+            $scope.topics = response.data;
         });
-    };
 
+});
+
+app.controller("searchCtrl",function ($window,$scope,config) {
+   $scope.redirectToSearchPage = function () {
+       $window.location.href = config.redirect_to_search + $scope.title;
+   }
 });

@@ -26,6 +26,10 @@ public class TopicController {
         this.topicService = topicService;
     }
 
+    /**
+     * get all topics sorted by date
+     * @return list of {@link Topic}
+     */
     @RequestMapping(value ="/getAllTopics",method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Topic>> getAllTopics(){
@@ -33,6 +37,11 @@ public class TopicController {
         return ResponseEntity.ok(topicService.findAllTopics());
     }
 
+    /**
+     * creates topic in system
+     * @param topic {@link Topic}
+     * @return {@link Topic}
+     */
     @RequestMapping(value ="/user/createTopic",method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<Topic> createTopic(@RequestBody Topic topic){
@@ -40,35 +49,45 @@ public class TopicController {
         return ResponseEntity.ok(topicService.createTopic(topic));
     }
 
+    /**
+     * update topic in the system
+     * @param topic {@link Topic}
+     * @return {@link Topic}
+     */
     @RequestMapping(value = "/user/updateTopic",method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<Topic> updateTopic(@RequestBody Topic topic){
         LOG.debug("TopicController.updateTopic = {} " + topic);
         return ResponseEntity.ok(topicService.updateTopic(topic));
     }
-    //todo: Cotroller with Path Variable and new jsp for searchResult and redirect to this controller in front-end
-    @RequestMapping(value = "/findTopicByTitle",method = RequestMethod.GET)
+
+    /**
+     * find {@link Topic} by title and body (if list was empty)
+     * @param title title of {@link Topic}
+     * @return list of {@link Topic}
+     */
+    @RequestMapping(value = "/findTopicByTitle",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<List<Topic>> getTopicsWithTitle(@RequestParam("title") String title){
+    public ResponseEntity<List<Topic>> getTopicsWithTitle(@RequestParam String title){
         LOG.debug("TopicController.getTopicsWithTitle = {} " + title);
         List<Topic> topics = topicService.findTopicsByTitle(title);
-        if(topics == null){
+        if(topics == null || topics.isEmpty()){
             topics = topicService.findTopicsByBody(title);
         }
         return ResponseEntity.ok(topics);
     }
 
+    /**
+     * return page and title of topics
+     * @param title query for searching
+     * @return search page and title as param
+     */
     @RequestMapping(value = "/search_{title}",method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView searchPage(@PathVariable String title){
         LOG.debug("TopicController.searchPage = {} " + title);
         ModelAndView searchPage = new ModelAndView("search");
         searchPage.addObject("title",title);
-        List<Topic> topics = topicService.findTopicsByTitle(title);
-        if(topics == null){
-            topics = topicService.findTopicsByBody(title);
-            searchPage.addObject("topics",topics);
-        }
         return searchPage;
     }
 }

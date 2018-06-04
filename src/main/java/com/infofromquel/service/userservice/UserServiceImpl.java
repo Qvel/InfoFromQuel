@@ -151,7 +151,6 @@ public class UserServiceImpl implements UserService{
     public Resource loadAsResource(String fileName) throws MalformedURLException{
         LOG.debug("UserService.loadAsResource = {} " + fileName);
         try {
-            LOG.debug("1");
             String path = "Q:" + File.separator + "work"
                     + File.separator + "InfoFromQuel" + File.separator + "infoFromQuel" + File.separator
                     + "src" + File.separator + "main" + File.separator
@@ -159,7 +158,6 @@ public class UserServiceImpl implements UserService{
                     + File.separator + fileName;
             Path file = Paths.get(path);
             Resource resource = new UrlResource(file.toUri());
-            LOG.debug("2");
             if (resource.exists() || resource.isReadable()) {
                 return resource;
             }
