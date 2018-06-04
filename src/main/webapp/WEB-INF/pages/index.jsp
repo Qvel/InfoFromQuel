@@ -13,10 +13,11 @@
 <body>
     <%@include file="include/header.jsp" %>
     <div class="container" ng-controller="findAllPostCtrl">
+        <div data-ng-init="getAllPosts()">
         <div class="well"  ng-repeat="topic in topics">
             <div class="media">
                 <a class="pull-left" href="#">
-                    <img class="media-object" src="http://localhost:8080/InfoQuel/getLogo?fileName={{topic.user.logo}}" width="150px" height="150px">
+                    <img class="media-object" ng-src="http://localhost:8080/InfoQuel/getLogo?fileName={{topic.user.logo}}" width="150px" height="150px">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">{{topic.title}}</h4>
@@ -36,7 +37,6 @@
                         </li>
                         <li>|</li>
                         <li>
-                            <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
                             <span><i class="fa fa-facebook-square"></i></span>
                             <span><i class="fa fa-twitter-square"></i></span>
                             <span><i class="fa fa-google-plus-square"></i></span>
@@ -46,6 +46,7 @@
                     </ul>
                 </div>
             </div>
+        </div>
         </div>
     </div>
     <%@include file="include/footer.jsp"%>

@@ -7,6 +7,7 @@ import com.infofromquel.entity.User;
 import com.infofromquel.service.mail.MailService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,7 @@ public class UserServiceImpl implements UserService{
     private UserDao userDao;
     private MailService mailService;
     private final PasswordEncoder passwordEncoder;
+
 
     /**
      * @return all user

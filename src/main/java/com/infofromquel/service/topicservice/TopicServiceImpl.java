@@ -56,4 +56,25 @@ public class TopicServiceImpl implements TopicService{
         LOG.debug("TopicServiceImpl.updateTopic = {} " + topic);
         return topicDao.updateTopic(topic);
     }
+
+    /**
+     * find topics that have such title
+     * @param title title of {@link Topic}
+     * @return list of {@link Topic}
+     */
+    @Override
+    public List<Topic> findTopicsByTitle(String title) {
+        LOG.debug("TopicServiceImpl.findTopicsByTitle = {} " + title);
+        return topicDao.findTopicsByTitle(title);
+    }
+    /**
+     *find topics that have such body
+     * @param body body of {@link Topic}
+     * @return list of {@link Topic}
+     */
+    @Override
+    public List<Topic> findTopicsByBody(String body) {
+        LOG.debug("TopicServiceImpl.findTopicsByBody = {} " + body);
+        return topicDao.findTopicsByBody(body);
+    }
 }

@@ -1,6 +1,5 @@
 
 var app = angular.module("indexPage",[]);
-
 /*
 For @RequestParam Url  :
 For all another @RequestBody
@@ -18,7 +17,8 @@ app.factory("config",function(){
        avatar_upload : ajax_url + "updateAvatar",
        user_update : ajax_url + "user/updateUser",
        topic_create: ajax_url + "user/createTopic",
-       topic_get_all : ajax_url + "getAllTopics"
+       topic_get_all : ajax_url + "getAllTopics",
+       topics_search : ajax_url + "findTopicByTitle"
    }
 });
 
@@ -166,8 +166,28 @@ app.controller("createPostCtrl",function ($scope,$http,config) {
 });
 
 app.controller("findAllPostCtrl",function ($scope,$http,config) {
-    $http.get(config.topic_get_all).then(function (response) {
-        $scope.topics = response.data;
-        console.log(response.data);
-    });
+    $scope.getAllPosts = function(){
+        alert("1");
+        $http.get(config.topic_get_all).then(function (response) {
+            $scope.topics = response.data;
+            console.log(response.data);
+        });
+    }
+});
+
+app.controller("postSearchCtrl",function ($scope,$http,config) {
+    $scope.getPostsByText = function (text) {
+        var data = "title=" + text;
+        $http({
+            url: config.topics_search,
+            method: "GET",
+            data:data,
+            headers:{
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+        }).then(function success(response) {
+            console.log(response.data);
+        });
+    };
+
 });

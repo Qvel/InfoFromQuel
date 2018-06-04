@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -81,5 +83,52 @@ public class TopicDaoImpl implements TopicDao{
         criteriaUpdate.where(criteriaBuilder.equal(root.get("id"),topic.getId()));
         session.createQuery(criteriaUpdate).executeUpdate();
         return topic;
+    }
+
+    /**
+     * find topics that have such title
+     * @param title title of {@link Topic}
+     * @return list of {@link Topic}
+     */
+    @Override
+    public List<Topic> findTopicsByTitle(String title) {
+        LOG.debug("TopicDaoImpl.findTopicsByTitle = {} " + title);
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Topic> criteriaQuery = criteriaBuilder.createQuery(Topic.class);
+        Root<Topic> root = criteriaQuery.from(Topic.class);
+        criteriaQuery.where(criteriaBuilder.like(root.get("title"),"%" + title + "%"));
+        List<Topic> topics;
+        try {
+             topics = session.createQuery(criteriaQuery).getResultList();
+        }catch (NoResultException e){
+            LOG.debug("Empty list");
+            return null;
+        }
+        topics.forEach(LOG::debug);
+        return topics;
+    }
+
+    /**
+     *find topics that have such body
+     * @param body body of {@link Topic}
+     * @return list of {@link Topic}
+     */
+    @Override
+    public List<Topic> findTopicsByBody(String body) {
+        LOG.debug("TopicDaoImpl.findTopicsByBody = {} " + body );
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Topic> criteriaQuery = criteriaBuilder.createQuery(Topic.class);
+        Root<Topic> root = criteriaQuery.from(Topic.class);
+        criteriaQuery.where(criteriaBuilder.like(root.get("body"),"%" + body + "%"));
+        List<Topic> topics;
+        try{
+            topics = session.createQuery(criteriaQuery).getResultList();
+        }catch (NoResultException e){
+            LOG.debug("Empty list");
+            return null;
+        }
+        return topics;
     }
 }

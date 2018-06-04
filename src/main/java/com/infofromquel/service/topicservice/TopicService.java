@@ -14,4 +14,8 @@ public interface TopicService {
     Topic createTopic(Topic topic);
 
     Topic updateTopic(Topic topic);
+
+    List<Topic> findTopicsByTitle(String title);
+
+    List<Topic> findTopicsByBody(String body);
 }

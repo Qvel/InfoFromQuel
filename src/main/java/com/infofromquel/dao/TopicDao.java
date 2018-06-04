@@ -16,4 +16,8 @@ public interface TopicDao {
 
     Topic updateTopic(Topic topic);
 
+    List<Topic> findTopicsByTitle(String title);
+
+    List<Topic> findTopicsByBody(String body);
+
 }
