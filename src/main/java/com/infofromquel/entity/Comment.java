@@ -1,6 +1,7 @@
 package com.infofromquel.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -31,8 +32,9 @@ public class Comment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="parent_id")
+    @JsonIgnore
     private Comment parent;
 
     @OneToMany(mappedBy = "parent",fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval=true)
@@ -44,6 +46,7 @@ public class Comment implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="topic_id",referencedColumnName = "id")
+    @JsonIgnore
     private Topic topic;
 
     @Column(name = "body")
@@ -126,14 +129,13 @@ public class Comment implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getParent(), getChildComments(), getUser(), getTopic(), getBody(), getDate());
+        return Objects.hash(getId(), getParent(), getUser(), getBody(), getDate());
     }
 
     @Override
     public String toString() {
         return "Comment{" + "id=" + id +
                 ", parent=" + parent +
-                ", childComments=" + childComments +
                 ", user=" + user +
                 ", topic=" + topic +
                 ", body='" + body + '\'' +

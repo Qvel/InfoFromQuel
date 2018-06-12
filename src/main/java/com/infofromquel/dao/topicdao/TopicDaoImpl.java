@@ -1,5 +1,6 @@
 package com.infofromquel.dao.topicdao;
 
+import com.infofromquel.entity.Comment;
 import com.infofromquel.entity.Topic;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -13,7 +14,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * DAO repository for {@link Topic}
@@ -44,7 +47,16 @@ public class TopicDaoImpl implements TopicDao{
         Root<Topic> root = criteriaQuery.from(Topic.class);
         criteriaQuery.orderBy(criteriaBuilder.asc(root.get("date")));
         List<Topic> topics  = session.createQuery(criteriaQuery).getResultList();
-        topics.forEach(LOG::debug);
+        topics.forEach(x->{
+            LOG.debug(x);
+            Set<Comment> comments = new HashSet<>();
+            x.getComments().forEach(y -> {
+                if(y.getParent() == null){
+                    comments.add(y);
+                }
+            });
+            x.setComments(comments);
+        });
         return topics;
     }
 

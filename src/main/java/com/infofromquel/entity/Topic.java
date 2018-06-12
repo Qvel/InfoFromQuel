@@ -128,7 +128,6 @@ public class Topic implements Serializable {
                 ", body='" + body + '\'' +
                 ", user=" + user +
                 ", date=" + date +
-                ", comments=" + comments +
                 '}';
     }
 }
