@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 /**
@@ -15,6 +17,7 @@ import java.util.Objects;
  * where title is title of topic
  * body is text in the topic
  * and user - user that create this topic
+ * and comments - comments in this topic
  */
 @Entity
 @Component
@@ -24,10 +27,12 @@ public class Topic implements Serializable {
     public Topic() {
     }
 
-    public Topic(String title, String body, User user) {
+    public Topic(String title, String body, User user, Date date, Set<Comment> comments) {
         this.title = title;
         this.body = body;
         this.user = user;
+        this.date = date;
+        this.comments = comments;
     }
 
     @Id
@@ -45,6 +50,10 @@ public class Topic implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date date;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "topic",fetch = FetchType.EAGER)
+    private Set<Comment> comments = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -85,6 +94,14 @@ public class Topic implements Serializable {
         this.date = date;
     }
 
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -94,13 +111,14 @@ public class Topic implements Serializable {
                 Objects.equals(getTitle(), topic.getTitle()) &&
                 Objects.equals(getBody(), topic.getBody()) &&
                 Objects.equals(getUser(), topic.getUser()) &&
-                Objects.equals(getDate(), topic.getDate());
+                Objects.equals(getDate(), topic.getDate()) &&
+                Objects.equals(getComments(), topic.getComments());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(getId(), getTitle(), getBody(), getUser(), getDate());
+        return Objects.hash(getId(), getTitle(), getBody(), getUser(), getDate(), getComments());
     }
 
     @Override
@@ -109,7 +127,8 @@ public class Topic implements Serializable {
                 ", title='" + title + '\'' +
                 ", body='" + body + '\'' +
                 ", user=" + user +
-                ", date = " + date +
+                ", date=" + date +
+                ", comments=" + comments +
                 '}';
     }
 }
