@@ -1,13 +1,11 @@
 package com.infofromquel.service.userservice;
 
-import com.infofromquel.dao.UserDao;
-import com.infofromquel.entity.EmailTemplates;
+import com.infofromquel.dao.userdao.UserDao;
 import com.infofromquel.entity.Role;
 import com.infofromquel.entity.User;
 import com.infofromquel.service.mail.MailService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

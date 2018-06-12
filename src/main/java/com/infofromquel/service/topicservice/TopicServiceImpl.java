@@ -1,6 +1,6 @@
 package com.infofromquel.service.topicservice;
 
-import com.infofromquel.dao.TopicDao;
+import com.infofromquel.dao.topicdao.TopicDao;
 import com.infofromquel.entity.Topic;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

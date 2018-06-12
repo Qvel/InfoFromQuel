@@ -1,4 +1,4 @@
-package com.infofromquel.dao;
+package com.infofromquel.dao.userdao;
 
 import com.infofromquel.entity.User;
 import org.apache.log4j.Logger;

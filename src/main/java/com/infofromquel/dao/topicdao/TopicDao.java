@@ -1,4 +1,4 @@
-package com.infofromquel.dao;
+package com.infofromquel.dao.topicdao;
 
 import com.infofromquel.entity.Topic;
 

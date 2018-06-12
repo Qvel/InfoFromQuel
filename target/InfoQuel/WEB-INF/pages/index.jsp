@@ -25,7 +25,7 @@
                     <ul class="list-inline list-unstyled">
                         <li><span><i class="glyphicon glyphicon-calendar"></i> {{topic.date}} </span></li>
                         <li>|</li>
-                        <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+                        <span><i class="glyphicon glyphicon-comment"></i> <a href="http://localhost:8080/InfoQuel/topic/{{topic.id}}" target="_blank">2 comments</a></span>
                         <li>|</li>
                         <li>
                             <span class="glyphicon glyphicon-star"></span>
