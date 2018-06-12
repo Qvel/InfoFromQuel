@@ -1,7 +1,9 @@
 package com.infofromquel.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -32,9 +34,12 @@ public class Comment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Transient
+    private Long parentId;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="parent_id")
-    @JsonIgnore
+    @JsonBackReference
     private Comment parent;
 
     @OneToMany(mappedBy = "parent",fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval=true)
@@ -42,6 +47,7 @@ public class Comment implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="user_id",referencedColumnName = "id",nullable = false)
+    @JsonManagedReference
     private User user;
 
     @ManyToOne
@@ -111,6 +117,14 @@ public class Comment implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     @Override

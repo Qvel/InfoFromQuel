@@ -53,6 +53,8 @@ public class TopicDaoImpl implements TopicDao{
             x.getComments().forEach(y -> {
                 if(y.getParent() == null){
                     comments.add(y);
+                }else{
+                    y.setParentId(y.getParent().getId());
                 }
             });
             x.setComments(comments);
