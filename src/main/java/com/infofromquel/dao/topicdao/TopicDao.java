@@ -1,6 +1,7 @@
 package com.infofromquel.dao.topicdao;
 
 import com.infofromquel.entity.Topic;
+import com.infofromquel.entity.User;
 
 import java.util.List;
 
@@ -22,5 +23,9 @@ public interface TopicDao {
 
     List<Topic> findTopicsByBody(String body);
 
+    List<Topic> findTopicsByUser(User user);
 
+    void likeTopic(Topic topic);
+
+    void dislikeTopic(Topic topic);
 }

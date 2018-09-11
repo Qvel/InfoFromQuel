@@ -13,6 +13,10 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Entity for Comment
+ * @author Serhii Zhuravlov
+ */
 @Component
 @Entity
 @Table(name = "comments")
@@ -30,34 +34,51 @@ public class Comment implements Serializable {
         this.date = date;
     }
 
+    /**
+     * Comment id
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    /**
+     * Parent {@link Comment} id
+     */
     @Transient
     private Long parentId;
-
+    /**
+     * Parent {@link Comment}
+     */
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="parent_id")
     @JsonBackReference
     private Comment parent;
-
+    /**
+     * Child comments
+     */
     @OneToMany(mappedBy = "parent",fetch = FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval=true)
     private Set<Comment> childComments = new HashSet<>();
-
+    /**
+     * {@link User} of comment
+     */
     @ManyToOne
     @JoinColumn(name="user_id",referencedColumnName = "id",nullable = false)
     @JsonManagedReference
     private User user;
-
+    /**
+     * {@link Topic} that has this comment
+     */
     @ManyToOne
     @JoinColumn(name="topic_id",referencedColumnName = "id")
     @JsonIgnore
     private Topic topic;
-
+    /**
+     * body of comment
+     */
     @Column(name = "body")
     private String body;
-
+    /**
+     * {@link Date} when comment was posted
+     */
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern="dd-MM-yyyy")
     @Column(name="date")

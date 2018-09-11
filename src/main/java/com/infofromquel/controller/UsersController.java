@@ -1,7 +1,5 @@
 package com.infofromquel.controller;
 
-
-
 import com.infofromquel.entity.User;
 import com.infofromquel.service.userservice.UserService;
 import org.apache.log4j.Logger;
@@ -20,6 +18,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.security.Principal;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Api for User options
@@ -160,10 +159,12 @@ public class UsersController {
 
 
     @RequestMapping(value = "/user/updateUser" , method = RequestMethod.POST)
-    public ResponseEntity<User> updateUser(@RequestBody User user){
+    public ResponseEntity updateUser(@RequestBody User user,Principal principal){
         LOG.debug("UsersController.updateUser = {}" + user);
-        userService.updateUser(user);
-        return ResponseEntity.ok(user);
+        if(Objects.equals(principal.getName(),user.getEmail())){
+            return ResponseEntity.ok(userService.updateUser(user));
+        }
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
 }

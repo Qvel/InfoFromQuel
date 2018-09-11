@@ -40,16 +40,31 @@ public class User implements Serializable {
         this.logo = user.logo;
     }
 
+    /**
+     * User id
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    /**
+     * User name
+     */
     @Column(name = "login",nullable = false)
     private String name;
+    /**
+     * User password
+     */
     @JsonIgnore
     @Column(name = "password",nullable = false)
     private String password;
+    /**
+     * User email
+     */
     @Column(name = "email",nullable = false)
     private String email;
+    /**
+     * User roles {@link Role}
+     */
     @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
     @JoinTable(
             name="users_roles",
@@ -69,11 +84,20 @@ public class User implements Serializable {
     )
     @JsonIgnore
     private Set<Role> roles = new HashSet<>();
+    /**
+     * Active status of User
+     */
     @Column(name = "is_exist",nullable = false)
     @JsonIgnore
     private boolean isExist;
+    /**
+     * User avatar name
+     */
     @Column(name = "logo")
     private String logo;
+    /**
+     * Topics {@link Topic} that posed {@link User}
+     */
     @JsonIgnore
     @OneToMany(cascade = {CascadeType.ALL},mappedBy = "user",fetch = FetchType.EAGER)
     private Set<Topic> topics = new HashSet<>();

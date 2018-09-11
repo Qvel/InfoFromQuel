@@ -3,13 +3,16 @@ package com.infofromquel.controller;
 import com.infofromquel.service.topicservice.TopicService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.infofromquel.entity.Topic;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Api for get/set/update {@link Topic}
@@ -40,13 +43,18 @@ public class TopicController {
     /**
      * creates topic in system
      * @param topic {@link Topic}
-     * @return {@link Topic}
+     * @return {@link HttpStatus} if success then ok with {@link Topic} , else Bad Request
      */
     @RequestMapping(value ="/user/createTopic",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Topic> createTopic(@RequestBody Topic topic){
+    public ResponseEntity createTopic(@RequestBody Topic topic,Principal principal){
         LOG.debug("TopicController.createTopic = {} " + topic);
-        return ResponseEntity.ok(topicService.createTopic(topic));
+        if(principal != null){
+            if(Objects.equals(principal.getName(),topic.getUser().getEmail())){
+                return ResponseEntity.ok(topicService.createTopic(topic));
+            }
+        }
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     /**
@@ -56,9 +64,16 @@ public class TopicController {
      */
     @RequestMapping(value = "/user/updateTopic",method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Topic> updateTopic(@RequestBody Topic topic){
+    public ResponseEntity updateTopic(@RequestBody Topic topic,Principal principal){
         LOG.debug("TopicController.updateTopic = {} " + topic);
-        return ResponseEntity.ok(topicService.updateTopic(topic));
+        if(principal != null){
+            if(Objects.equals(principal.getName(),topic.getUser().getEmail())){
+                if(topicService.checkIsTopicPosedByUser(topic,topic.getUser())){
+                    return ResponseEntity.ok(topicService.updateTopic(topic));
+                }
+            }
+        }
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     /**
@@ -98,5 +113,33 @@ public class TopicController {
         ModelAndView topicPage = new ModelAndView("topic");
         topicPage.addObject("Topic",topicService.findTopicById(id));
         return topicPage;
+    }
+
+    /**
+     * api for likes to topics
+     * @param topic {@link Topic}
+     * @return {@link HttpStatus} ok
+     */
+    @RequestMapping(value = "/user/like",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity likeTopic(@RequestBody Topic topic){
+        LOG.debug("TopicController.likeTopic = {} " + topic);
+        //todo Check User for already likes current topic
+        topicService.likeTopic(topic);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    /**
+     * api for dislike topics
+     * @param topic {@link Topic}
+     * @return {@link HttpStatus} ok
+     */
+    @RequestMapping(value = "/user/dislikes",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity dislikeTopic(@RequestBody Topic topic){
+        LOG.debug("TopicController.dislikeTopic = {} " + topic);
+        //todo Check User for already dislikes topic
+        topicService.dislikeTopic(topic);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

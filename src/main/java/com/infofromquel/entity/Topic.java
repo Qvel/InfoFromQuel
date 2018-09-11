@@ -14,10 +14,6 @@ import java.util.Set;
 
 /**
  * Entity for Topic of Forum
- * where title is title of topic
- * body is text in the topic
- * and user - user that create this topic
- * and comments - comments in this topic
  */
 @Entity
 @Component
@@ -35,22 +31,37 @@ public class Topic implements Serializable {
         this.comments = comments;
     }
 
+    /**
+     * topic id
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    /**
+     * topic title
+     */
     @Column(name="title",nullable = false)
     private String title;
-
+    /**
+     * topic body
+     */
     @Column(name="body", nullable = false)
     private String body;
+    /**
+     * {@link User} that posed this topic
+     */
     @ManyToOne
     @JoinColumn(name="user_id",referencedColumnName = "id",nullable = false)
     private User user;
+    /**
+     * {@link Date} when {@link Topic} topic was posed
+     */
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date date;
-
+    /**
+     * {@link Topic} topics comments {@link Comment}
+     */
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "topic",fetch = FetchType.EAGER)
     private Set<Comment> comments = new HashSet<>();
 
@@ -101,6 +112,7 @@ public class Topic implements Serializable {
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }
+
 
     @Override
     public boolean equals(Object o) {

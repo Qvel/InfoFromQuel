@@ -2,6 +2,7 @@ package com.infofromquel.dao.topicdao;
 
 import com.infofromquel.entity.Comment;
 import com.infofromquel.entity.Topic;
+import com.infofromquel.entity.User;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -161,5 +162,59 @@ public class TopicDaoImpl implements TopicDao{
         Topic topic = session.createQuery(criteriaQuery).getSingleResult();
         LOG.debug("result = {} " + topic);
         return topic;
+    }
+
+    /**
+     * finds all topics posed by user
+     * @param user {@link User}
+     * @return list of {@link Topic}
+     */
+    @Override
+    public List<Topic> findTopicsByUser(User user) {
+        LOG.debug("TopicDao.findTopicsByUser = {} " + user);
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Topic> criteriaQuery = criteriaBuilder.createQuery(Topic.class);
+        Root<Topic> root = criteriaQuery.from(Topic.class);
+        criteriaQuery.where(criteriaBuilder.equal(root.get("user"),user));
+        List<Topic> userTopics;
+        try {
+            userTopics = session.createQuery(criteriaQuery).getResultList();
+        }catch (NoResultException e){
+            LOG.debug("Empty list");
+            return null;
+        }
+        userTopics.forEach(LOG::debug);
+        return userTopics;
+    }
+
+    /**
+     * press like to Topic
+     * @param topic {@link Topic}
+     */
+    @Override
+    public void likeTopic(Topic topic) {
+        LOG.debug("TopicDaoImpl.likeTopic = {} " + topic);
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaUpdate<Topic> criteriaUpdate = criteriaBuilder.createCriteriaUpdate(Topic.class);
+        Root<Topic> root = criteriaUpdate.from(Topic.class);
+
+        session.createQuery(criteriaUpdate).executeUpdate();
+    }
+
+    /**
+     * press dislike to Topic
+     * @param topic {@link Topic}
+     */
+    @Override
+    public void dislikeTopic(Topic topic) {
+        LOG.debug("TopicDaoImpl.dislikeTopic = {} " + topic);
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaUpdate<Topic> criteriaUpdate = criteriaBuilder.createCriteriaUpdate(Topic.class);
+        Root<Topic> root = criteriaUpdate.from(Topic.class);
+
+        session.createQuery(criteriaUpdate).executeUpdate();
     }
 }

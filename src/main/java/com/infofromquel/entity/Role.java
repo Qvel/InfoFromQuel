@@ -24,10 +24,15 @@ public class Role implements Serializable {
         this.name = name;
     }
 
+    /**
+     * Role id
+     */
     @Id
     @Column(name="id",nullable = false)
-
     private Long id;
+    /**
+     * Role name
+     */
     @Column(name="name",nullable = false)
     private String name;
 
